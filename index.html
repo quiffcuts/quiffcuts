@@ -1,0 +1,1975 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- === KEYWORDS AUR DESCRIPTION UPDATE KAR DIYE HAIN === -->
+    <meta name="description" content="Quiff Cuts - Faisalabad ka behtareen men's salon jahan aapko milenge premium haircuts, beard styling, aur grooming services in Model City. Book your haircut or dulha grooming package online. Visit the best barber shop in Faisalabad today!">
+    <meta name="keywords" content="barber shop, quiff cuts, men's salon in Faisalabad, best salon Faisalabad, haircut in Model City Faisalabad, beard trim, grooming services in Eden Valley, styling, top salon Faisalabad, dulha grooming package Faisalabad, men's facial, book haircut online Faisalabad, Faisalabad salon appointment">
+    <title>Quiff Cuts - The Art of Grooming in Faisalabad</title>
+
+    <!-- === WEBSITE KA FAVICON (TAB ICON) === -->
+    <link rel="icon" type="image/png" href="https://i.postimg.cc/7Ps1gx0C/png.png">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Elfsight Google Reviews Widget Script -->
+    <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
+
+    <!-- QR Code and HTML2Canvas Libraries for Booking Pass -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    <!-- === LOCAL SEO KE LIYE SCHEMA MARKUP ADD KAR DIYA HAI === -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BeautySalon",
+      "name": "Quiff Cuts",
+      "description": "Quiff Cuts is a premium men's salon in Faisalabad offering expert haircuts, beard styling, facials, and complete grooming packages including dulha grooming.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Model City 1 Eden Valley",
+        "addressLocality": "Faisalabad",
+        "addressCountry": "PK"
+      },
+      "telephone": "+923082270007",
+      "url": "https://www.quiffcuts.com",  <!-- Yahan apni website ka poora URL daalein -->
+      "image": "https://i.postimg.cc/cJnLH5RX/png.png",
+      "openingHours": "Mo-Su 10:00-02:00",
+      "priceRange": "Rs. 100 - Rs. 18000"
+    }
+    </script>
+
+    <!-- Firebase SDK - Start -->
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+      import { getFirestore, collection, addDoc, getDocs, query, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+      import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"; 
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyApbKqy3oi3bGugP9XL1T2Q7SW9FhHcx5Y",
+        authDomain: "quiffcuts-3bee4.firebaseapp.com",
+        projectId: "quiffcuts-3bee4",
+        storageBucket: "quiffcuts-3bee4.firebasestorage.app", 
+        messagingSenderId: "1067777064918",
+        appId: "1:1067777064918:web:15e622dc21675e2032ee77",
+        measurementId: "G-LNXSLNZVMR"
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const dbInstance = getFirestore(app);
+      const authInstance = getAuth(app); // Initialize Auth
+
+      // Make Firebase instances and core functions globally accessible
+      window.firebaseApp = app;
+      window.firebaseFirestore = dbInstance;
+      window.firebaseAuth = authInstance; // Expose Auth instance
+      // Auth functions
+      window.firebaseSignInWithEmailAndPassword = signInWithEmailAndPassword;
+      window.firebaseSignOut = signOut;
+      window.firebaseOnAuthStateChanged = onAuthStateChanged;
+      // Firestore functions
+      window.firebaseFirestore.addDoc = addDoc;
+      window.firebaseFirestore.collection = collection;
+      window.firebaseFirestore.getDocs = getDocs;
+      window.firebaseFirestore.query = query;
+      window.firebaseFirestore.deleteDoc = deleteDoc;
+      window.firebaseFirestore.doc = doc;
+    </script>
+    <!-- Firebase SDK - End -->
+
+    <style>
+        /* CSS Variables for easy color management */
+        :root {
+            --gold: #C5B358;
+            --black: #0a0a0a;
+            --dark-gray: #111111;
+            --text-light: #e0e0e0;
+            --text-dark: #a0a0a0;
+        }
+
+        @keyframes animateBackground {
+            0% { background-position: 50% 0%; }
+            50% { background-position: 50% 100%; }
+            100% { background-position: 50% 0%; }
+        }
+
+        body {
+            background: linear-gradient(180deg, var(--black) 30%, var(--gold) 50%, var(--black) 70%);
+            background-size: 100% 300%;
+            animation: animateBackground 25s ease-in-out infinite;
+            color: var(--text-light);
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        .text-gold-gradient {
+            background: linear-gradient(135deg, #E6C66E, var(--gold), #b59f3b);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .text-gold { color: var(--gold); }
+
+        .btn-primary {
+            background-color: var(--gold);
+            color: var(--black);
+            font-weight: 600;
+            padding: 12px 32px;
+            border-radius: 50px;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 4px 15px rgba(197, 179, 88, 0.2);
+            border: 2px solid var(--gold);
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(197, 179, 88, 0.3);
+            background-color: transparent;
+            color: var(--gold);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--gold);
+            font-weight: 600;
+            padding: 10px 28px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            border: 2px solid var(--gold);
+        }
+        .btn-secondary:hover {
+            background-color: var(--gold);
+            color: var(--black);
+        }
+
+        .hero-section {
+            background-size: cover;
+            background-position: center 30%;
+            position: relative;
+            overflow: hidden;
+            transition: background-image 1.5s ease-in-out;
+        }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 10, 0.5);
+            z-index: 1;
+        }
+        .hero-content { position: relative; z-index: 2; }
+
+        .glass-card {
+            background: rgba(17, 17, 17, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        .glass-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-section.is-visible { opacity: 1; transform: translateY(0); }
+        
+        .title-underline { position: relative; padding-bottom: 10px; }
+        .title-underline::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--gold);
+            border-radius: 2px;
+        }
+        
+        .about-slideshow-frame {
+            padding: 10px;
+            border: 1px solid #333;
+            border-radius: 12px;
+            background-color: var(--black);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            width: 100%;
+            max-width: 350px;
+            transition: border-color 0.5s ease;
+        }
+        .about-slideshow-frame:hover { border-color: var(--gold); }
+        #about-slideshow-container {
+            overflow: hidden;
+            border-radius: 0.5rem;
+            position: relative;
+            height: 480px;
+            width: 100%;
+        }
+        .about-slide-wrapper {
+             position: absolute;
+             top: 0;
+             left: 0;
+             width: 100%;
+             height: 100%;
+             opacity: 0;
+             transition: opacity 1.5s ease-in-out;
+        }
+        .about-slide-wrapper.active { opacity: 1; }
+        .about-slide {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%) brightness(0.7);
+            transition: filter 0.5s ease-in-out;
+        }
+        .about-slideshow-frame:hover .about-slide-wrapper.active .about-slide {
+            filter: grayscale(0) brightness(1);
+        }
+
+        /* --- Gallery Styles --- */
+        .gallery-card {
+            position: relative;
+            padding: 8px;
+            border: 1px solid #333;
+            border-radius: 12px;
+            background-color: var(--black);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+            transition: all 0.4s ease;
+            overflow: hidden;
+        }
+        .gallery-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+        }
+        .gallery-img-container {
+            overflow: hidden;
+            border-radius: 0.5rem;
+            aspect-ratio: 3 / 4;
+        }
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .gallery-card:hover .gallery-img {
+            transform: scale(1.1);
+        }
+        
+        .filter-btn {
+            padding: 8px 20px;
+            border: 1px solid var(--text-dark);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--gold);
+            color: var(--black);
+            border-color: var(--gold);
+            font-weight: 600;
+        }
+        .gallery-item {
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            position: relative;
+        }
+        .gallery-item.hidden {
+            transform: scale(0.8);
+            opacity: 0;
+            width: 0;
+            height: 0;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+        }
+        
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            display: flex; justify-content: center; align-items: center;
+            z-index: 100; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+        }
+        .modal-overlay.visible { opacity: 1; pointer-events: auto; }
+        .modal-content {
+            background-color: var(--dark-gray);
+            padding: 2rem; border-radius: 10px; border: 1px solid var(--gold);
+            width: 90%; max-width: 500px;
+            transform: scale(0.95); transition: transform 0.3s ease;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        .modal-overlay.visible .modal-content { transform: scale(1); }
+        .modal-content input, .modal-content select, .modal-content textarea {
+            background-color: var(--black);
+            border: 1px solid var(--text-dark);
+            color: var(--text-light);
+            width: 100%; padding: 12px; border-radius: 5px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .modal-content input:focus, .modal-content select:focus, .modal-content textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 2px rgba(197, 179, 88, 0.3);
+        }
+        
+        /* --- Custom Time Picker Styles --- */
+        .custom-time-picker-wrapper {
+            background-color: var(--black);
+            border: 1px solid var(--text-dark);
+            border-radius: 5px;
+            padding: 5px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .custom-time-picker-wrapper:focus-within {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 2px rgba(197, 179, 88, 0.3);
+        }
+        .custom-time-picker {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+        .time-part {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .time-part input {
+            width: 60px;
+            text-align: center;
+            font-size: 1.25rem;
+            font-weight: 500;
+            border: none !important;
+            background: transparent !important;
+            padding: 0 !important;
+            box-shadow: none !important;
+        }
+        .time-part input:focus {
+            box-shadow: none !important;
+            border-color: transparent !important;
+        }
+        .time-arrow {
+            background: none;
+            border: none;
+            color: var(--text-light);
+            cursor: pointer;
+            font-size: 1rem;
+            line-height: 1;
+            padding: 4px 10px;
+        }
+        .time-arrow:hover {
+            color: var(--gold);
+        }
+        .custom-time-picker > span {
+            font-size: 1.25rem;
+            font-weight: 500;
+        }
+
+        /* --- Booking Pass Styles --- */
+        #booking-pass-container {
+            width: 100%;
+            max-width: 400px;
+            margin: auto;
+        }
+        .booking-pass-card {
+            background: #1a1a1a;
+            border: 2px solid var(--gold);
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        .booking-pass-card::before, .booking-pass-card::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: var(--dark-gray);
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .booking-pass-card::before { left: -25px; }
+        .booking-pass-card::after { right: -25px; }
+
+        .pass-header {
+            text-align: center;
+            border-bottom: 2px dashed rgba(197, 179, 88, 0.5);
+            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+        }
+        .pass-header img {
+            height: 60px;
+            margin: 0 auto 0.5rem;
+        }
+        .pass-header h3 {
+            background-color: var(--gold);
+            color: var(--black);
+            padding: 0.5rem 1.5rem;
+            border-radius: 7px;
+            display: inline-block;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+        .pass-details .detail-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #333;
+        }
+        .pass-details .detail-item:last-child {
+            border-bottom: none;
+        }
+        .pass-details .detail-label {
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+        .pass-details .detail-value {
+            color: var(--text-light);
+            font-weight: 600;
+            text-align: right;
+        }
+        .pass-qr-code {
+            padding: 1rem;
+            margin-top: 1rem;
+            background: white;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #pass-qrcode-container canvas {
+            width: 120px !important;
+            height: 120px !important;
+        }
+
+        .elfsight-app-cc6dedf0-59f2-4afb-bb5a-ac06091e73ea a[href*="elfsight.com"] { display: none !important; }
+        
+        .delete-icon {
+            position: absolute; top: 15px; right: 15px;
+            background-color: rgba(239, 68, 68, 0.8);
+            color: white; width: 30px; height: 30px; border-radius: 50%;
+            display: none; justify-content: center; align-items: center;
+            cursor: pointer; z-index: 10; transition: background-color 0.3s;
+        }
+        .delete-icon:hover { background-color: rgba(220, 38, 38, 1); }
+        body.delete-mode .delete-icon { display: flex; }
+        #finish-managing-btn {
+            position: fixed; top: 100px; right: 20px; z-index: 101;
+        }
+
+        /* Custom styles for the new packages section */
+        .card-glow {
+            transition: all 0.3s ease-in-out;
+        }
+        .card-glow:hover {
+            box-shadow: 0 0 30px rgba(197, 179, 88, 0.4); /* Using existing --gold color */
+            transform: translateY(-10px);
+        }
+        .btn-gold-package { /* Custom class for package buttons */
+            background-color: var(--gold); 
+            color: var(--black); 
+            transition: all 0.3s ease;
+            font-weight: 600;
+            padding: 12px 32px;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(197, 179, 88, 0.2);
+            border: 2px solid var(--gold);
+        }
+        .btn-gold-package:hover {
+            background-color: transparent;
+            color: var(--gold);
+            box-shadow: 0 8px 25px rgba(197, 179, 88, 0.3);
+        }
+        .icon-gold {
+            color: var(--gold); /* Using existing --gold color */
+        }
+        /* Specific style for VIP Grooming card glow (from previous update) */
+        .shadow-gold-glow {
+            box-shadow: 0 0 20px rgba(197, 179, 88, 0.6); /* Gold glow effect */
+        }
+        /* Adjustments for the "Most Popular" label to match bc9fb8.png */
+        .package-most-popular {
+            position: absolute;
+            top: 0px; /* Adjust this value as needed */
+            left: 50%;
+            transform: translate(-50%, -50%); /* Adjust to move it up */
+            background-color: #D4AF37; /* Gold color from the image */
+            color: #111827; /* Dark text text-color from the image */
+            font-weight: bold;
+            font-size: 0.75rem; /* text-xs */
+            padding: 4px 16px; /* px-4 py-1 */
+            border-radius: 9999px; /* rounded-full */
+            text-transform: uppercase;
+            letter-spacing: 0.05em; /* tracking-wider */
+            z-index: 10;
+        }
+        
+        /* --- NEW: Our Team Section Styles --- */
+        .team-card {
+            background: rgba(17, 17, 17, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(197, 179, 88, 0.25);
+            border-color: var(--gold);
+        }
+        .team-card img {
+            transition: transform 0.4s ease;
+        }
+        .team-card:hover img {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-black">
+
+    <!-- Finish Managing Button (Initially Hidden for non-admin) -->
+    <button id="finish-managing-btn" class="hidden btn-primary bg-red-600 border-red-600 hover:bg-transparent hover:text-red-500">
+        <i class="fas fa-check mr-2"></i> Finish Managing
+    </button>
+
+    <!-- Header / Navbar -->
+    <header class="bg-black/70 backdrop-blur-md p-4 sticky top-0 z-50 border-b border-white/10">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#" class="flex items-center gap-2">
+                <img src="https://i.postimg.cc/cJnLH5RX/png.png" alt="Quiff Cuts Logo" class="h-12">
+                <span class="text-2xl font-playfair text-gold-gradient inline">Quiff Cuts</span>
+            </a>
+            <nav class="hidden md:flex space-x-8 text-sm font-medium tracking-wider">
+                <a href="#about" class="hover:text-gold transition">ABOUT</a>
+                <a href="#services" class="hover:text-gold transition">SERVICES</a>
+                <a href="#packages" class="hover:text-gold transition">PACKAGES</a>
+                <a href="#team" class="hover:text-gold transition">OUR TEAM</a>
+                <a href="#customer-gallery" class="hover:text-gold transition">GALLERY</a>
+                <a href="#blog" class="hover:text-gold transition">BLOG</a>
+                <a href="#contact" class="hover:text-gold transition">CONTACT</a>
+            </nav>
+            <a href="#booking" class="btn-primary hidden md:inline-block">Book Now</a>
+            <button id="mobile-menu-btn" class="md:hidden text-2xl text-gold">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden mt-4 text-center">
+             <a href="#about" class="block py-2 hover:text-gold transition">ABOUT</a>
+             <a href="#services" class="block py-2 hover:text-gold transition">SERVICES</a>
+             <a href="#packages" class="block py-2 hover:text-gold transition">PACKAGES</a>
+             <a href="#team" class="block py-2 hover:text-gold transition">OUR TEAM</a>
+             <a href="#customer-gallery" class="block py-2 hover:text-gold transition">GALLERY</a>
+             <a href="#blog" class="block py-2 hover:text-gold transition">BLOG</a>
+             <a href="#contact" class="block py-2 hover:text-gold transition">CONTACT</a>
+             <a href="#booking" class="btn-primary mt-4 inline-block">Book Now</a>
+        </div>
+    </header>
+
+    <!-- Main Content Sections -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="hero-section min-h-screen flex items-center justify-center text-center p-4">
+            <div class="hero-content container mx-auto">
+                <h1 class="text-5xl md:text-8xl font-playfair text-white leading-tight drop-shadow-lg">The Art of Grooming</h1>
+                <!-- === KEYWORD ADD KAR DIYA HAI === -->
+                <p class="text-lg md:text-xl mt-4 max-w-2xl mx-auto text-text-light font-light">Where style is created, confidence is born. Welcome to the ultimate barbering experience at the top men's salon in Faisalabad.</p>
+                <a href="#services" class="btn-primary mt-10 inline-block">Discover Your Style</a>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="py-24 fade-in-section">
+            <div class="container mx-auto px-4 grid md:grid-cols-2 gap-16 items-center">
+                <div class="about-slideshow-frame mx-auto">
+                    <div id="about-slideshow-container">
+                        <!-- Slides will be injected here by JS -->
+                    </div>
+                </div>
+                <div>
+                    <h2 class="font-playfair text-4xl md:text-5xl mb-4"><span class="text-gold-gradient">Our Story</span></h2>
+                    <!-- === KEYWORD ADD KAR DIYA HAI === -->
+                    <p class="text-text-dark mb-6">
+                        Quiff Cuts isn't just a place for a haircut; it's a lifestyle. Founded in 2024, we are a top-rated men's salon in Faisalabad, aiming to bring back the classic art of barbering with a modern twist. Our master barbers are dedicated to providing you with a personalized grooming experience that leaves you looking sharp and feeling confident.
+                    </p>
+                    <div class="flex space-x-8">
+                        <div>
+                            <i class="fas fa-gem text-gold text-2xl mb-2"></i>
+                            <h3 class="font-semibold text-lg">Premium Products</h3>
+                            <p class="text-sm text-text-dark">We use only the finest quality grooming products.</p>
+                        </div>
+                        <div>
+                            <i class="fas fa-shield-alt text-gold text-2xl mb-2"></i>
+                            <h3 class="font-semibold text-lg">Expert Barbers</h3>
+                            <p class="text-sm text-text-dark">A team of passionate and skilled professionals.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="bg-dark-gray py-24 fade-in-section">
+            <div class="container mx-auto text-center px-4">
+                <h2 class="font-playfair text-4xl md:text-5xl mb-4 text-gold-gradient title-underline">Our Signature Services</h2>
+                <!-- === KEYWORD ADD KAR DIYA HAI === -->
+                <p class="text-text-dark mb-16 max-w-2xl mx-auto">Precision cuts, classic shaves, and everything in between. Explore the best grooming services in Faisalabad, crafted to perfection, just for you.</p>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Service Cards -->
+                    <div class="glass-card p-6 rounded-lg text-center flex flex-col justify-between">
+                        <div>
+                            <i class="fas fa-cut text-gold text-3xl mb-3"></i>
+                            <h3 class="text-xl font-semibold mb-2">Hair Cut</h3>
+                            <p class="text-text-dark mb-3 text-sm">A sharp and stylish cut tailored to your preference.</p>
+                        </div>
+                        <span class="text-xl font-bold text-gold">Rs. 500</span>
+                    </div>
+                    <div class="glass-card p-6 rounded-lg text-center flex flex-col justify-between">
+                        <div>
+                            <i class="fas fa-user-edit text-gold text-3xl mb-3"></i>
+                            <h3 class="text-xl font-semibold mb-2">Beard Trim</h3>
+                            <p class="text-text-dark mb-3 text-sm">Expert shaping and trimming for a perfect beard.</p>
+                        </div>
+                        <span class="text-xl font-bold text-gold">Rs. 300</span>
+                    </div>
+                    <div class="glass-card p-6 rounded-lg text-center flex flex-col justify-between">
+                        <div>
+                            <i class="fas fa-scissors text-gold text-3xl mb-3"></i>
+                            <h3 class="text-xl font-semibold mb-2">Shaving</h3>
+                            <p class="text-text-dark mb-3 text-sm">A classic clean shave for a smooth and fresh look.</p>
+                        </div>
+                        <span class="text-xl font-bold text-gold">Rs. 300</span>
+                    </div>
+                    <div class="glass-card p-6 rounded-lg text-center flex flex-col justify-between">
+                        <div>
+                            <i class="fas fa-band-aid text-gold text-3xl mb-3"></i>
+                            <h3 class="text-xl font-semibold mb-2">Nose Strip</h3>
+                            <p class="text-text-dark mb-3 text-sm">Quick and effective blackhead removal from the nose.</p>
+                        </div>
+                        <span class="text-xl font-bold text-gold">Rs. 100</span>
+                    </div>
+                    <div class="glass-card p-6 rounded-lg text-center flex flex-col justify-between">
+                        <div>
+                            <i class="fas fa-palette text-gold text-3xl mb-3"></i>
+                            <h3 class="text-xl font-semibold mb-2">Hair Color</h3>
+                            <p class="text-text-dark mb-3 text-sm">Vibrant and lasting color using premium products.</p>
+                        </div>
+                        <span class="text-xl font-bold text-gold">Rs. 1000</span>
+                    </div>
+                    <div class="glass-card p-6 rounded-lg text-center flex flex-col justify-between">
+                        <div>
+                            <i class="fas fa-gem text-gold text-3xl mb-3"></i>
+                            <h3 class="text-xl font-semibold mb-2">Groom Package</h3>
+                            <p class="text-sm text-text-dark mb-3 text-sm">The ultimate package for the groom-to-be.</p>
+                        </div>
+                        <span class="text-xl font-bold text-gold">Rs. 18000</span>
+                    </div>
+                    <div class="glass-card p-6 rounded-lg text-center flex flex-col justify-between">
+                        <div>
+                            <i class="fas fa-paint-brush text-gold text-3xl mb-3"></i>
+                            <h3 class="text-xl font-semibold mb-2">Beard Color</h3>
+                            <p class="text-text-dark mb-3 text-sm">Enhance your beard with our professional coloring.</p>
+                        </div>
+                        <span class="text-xl font-bold text-gold">Rs. 500</span>
+                    </div>
+                    <div class="glass-card p-6 rounded-lg text-center flex flex-col justify-between">
+                        <div>
+                            <i class="fas fa-spa text-gold text-3xl mb-3"></i>
+                            <h3 class="text-xl font-semibold mb-2">Face Cleansing</h3>
+                            <p class="text-text-dark mb-3 text-sm">Deep cleansing to rejuvenate and refresh your skin.</p>
+                        </div>
+                        <span class="text-xl font-bold text-gold">Rs. 1000 - 2000</span>
+                    </div>
+                    <div class="glass-card p-6 rounded-lg text-center flex flex-col justify-between">
+                        <div>
+                            <i class="fas fa-magic text-gold text-3xl mb-3"></i>
+                            <h3 class="text-xl font-semibold mb-2">Facial Treatment</h3>
+                            <p class="text-text-dark mb-3 text-sm">Advanced facial treatments for a glowing complexion.</p>
+                        </div>
+                        <span class="text-xl font-bold text-gold">Rs. 4000 - 8000</span>
+                    </div>
+                    <div class="glass-card p-6 rounded-lg text-center flex flex-col justify-between">
+                        <div>
+                            <i class="fas fa-user-tag text-gold text-3xl mb-3"></i>
+                            <h3 class="text-xl font-semibold mb-2">Makeup</h3>
+                            <p class="text-text-dark mb-3 text-sm">Professional makeup for any occasion.</p>
+                        </div>
+                        <span class="text-xl font-bold text-gold">Rs. 500 - 1500</span>
+                    </div>
+                    <div class="glass-card p-6 rounded-lg text-center flex flex-col justify-between">
+                        <div>
+                            <i class="fas fa-wind text-gold text-3xl mb-3"></i>
+                            <h3 class="text-xl font-semibold mb-2">Hair Style</h3>
+                            <p class="text-text-dark mb-3 text-sm">Modern and classic hair styling for a sharp look.</p>
+                        </div>
+                        <span class="text-xl font-bold text-gold">Rs. 300</span>
+                    </div>
+                    <div class="glass-card p-6 rounded-lg text-center flex flex-col justify-between">
+                        <div>
+                            <i class="fas fa-shower text-gold text-3xl mb-3"></i>
+                            <h3 class="text-xl font-semibold mb-2">Head Wash</h3>
+                            <p class="text-text-dark mb-3 text-sm">A relaxing head wash and conditioning.</p>
+                        </div>
+                        <span class="text-xl font-bold text-gold">Rs. 100</span>
+                    </div>
+                    <div class="glass-card p-6 rounded-lg text-center flex flex-col justify-between">
+                        <div>
+                            <i class="fas fa-hand-paper text-gold text-3xl mb-3"></i>
+                            <h3 class="text-xl font-semibold mb-2">Massage</h3>
+                            <p class="text-text-dark mb-3 text-sm">Stress-relieving head and shoulder massage.</p>
+                        </div>
+                        <span class="text-xl font-bold text-gold">Rs. 300 - 1000</span>
+                    </div>
+                    <div class="glass-card p-6 rounded-lg text-center flex flex-col justify-between">
+                        <div>
+                            <i class="fas fa-hand-sparkles text-gold text-3xl mb-3"></i>
+                            <h3 class="text-xl font-semibold mb-2">Mani Pedi</h3>
+                            <p class="text-text-dark mb-3 text-sm">Complete manicure and pedicure for a clean look.</p>
+                        </div>
+                        <span class="text-xl font-bold text-gold">Rs. 6000</span>
+                    </div>
+                    <div class="glass-card p-6 rounded-lg text-center flex flex-col justify-between">
+                        <div>
+                            <i class="fas fa-user-plus text-gold text-3xl mb-3"></i>
+                            <h3 class="text-xl font-semibold mb-2">Hair & Beard Cut</h3>
+                            <p class="text-text-dark mb-3 text-sm">A complete package for your hair and beard.</p>
+                        </div>
+                        <span class="text-xl font-bold text-gold">Rs. 800</span>
+                    </div>
+                    <div class="glass-card p-6 rounded-lg text-center flex flex-col justify-between">
+                        <div>
+                            <i class="fas fa-tint text-gold text-3xl mb-3"></i>
+                            <h3 class="text-xl font-semibold mb-2">Wax</h3>
+                            <p class="text-text-dark mb-3 text-sm">Face and body waxing for smooth skin.</p>
+                        </div>
+                        <span class="text-xl font-bold text-gold">Rs. 200 - 1000</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Exclusive Packages Section -->
+        <section id="packages" class="py-24 fade-in-section">
+            <div class="container mx-auto max-w-7xl">
+                <!-- Section Header -->
+                <div class="text-center mb-12">
+                    <h2 class="font-playfair text-4xl md:text-5xl mb-4 text-gold-gradient title-underline">Our Exclusive Packages</h2>
+                    <p class="text-lg text-gray-400">Choose a package that suits you best and save money!</p>
+                </div>
+
+                <!-- Packages Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+                    <!-- Package 1: Basic Grooming -->
+                    <div class="card-glow bg-black/70 border border-gray-800 rounded-lg p-6 flex flex-col">
+                        <h3 class="text-2xl font-bold font-playfair mb-4">Basic Grooming</h3>
+                        <ul class="space-y-3 text-gray-300 flex-grow">
+                            <li class="flex items-center"><i class="fas fa-check-circle icon-gold w-5 mr-3"></i> Hair Cut</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle icon-gold w-5 mr-3"></i> Beard Trim</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle icon-gold w-5 mr-3"></i> Face Fresh</li>
+                        </ul>
+                        <div class="text-center my-6">
+                            <p class="text-gray-400 line-through">Rs. 1,300</p>
+                            <p class="text-4xl font-bold text-gold">Rs. 1000</p>
+                            <p class="text-green-400 font-semibold">You Save Rs. 300</p>
+                        </div>
+                        <button type="button" class="btn-gold-package font-bold py-3 px-6 rounded-lg w-full text-center mt-auto book-package-btn" data-service="Basic Grooming Package" data-price="1000">
+                            <i class="fab fa-whatsapp mr-2"></i> Book Now
+                        </button>
+                    </div>
+
+                    <!-- Package 2: Refresh & Style -->
+                    <div class="card-glow bg-black/70 border border-gray-800 rounded-lg p-6 flex flex-col">
+                        <h3 class="text-2xl font-bold font-playfair mb-4">Refresh & Style</h3>
+                        <ul class="space-y-3 text-gray-300 flex-grow">
+                            <li class="flex items-center"><i class="fas fa-check-circle icon-gold w-5 mr-3"></i> Face Cleansing</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle icon-gold w-5 mr-3"></i> Head Wash</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle icon-gold w-5 mr-3"></i> Hair Style</li>
+                        </ul>
+                        <div class="text-center my-6">
+                            <p class="text-gray-400 line-through">Rs. 1,900</p>
+                            <p class="text-4xl font-bold text-gold">Rs. 1,500</p>
+                            <p class="text-green-400 font-semibold">You Save Rs. 400</p>
+                        </div>
+                        <button type="button" class="btn-gold-package font-bold py-3 px-6 rounded-lg w-full text-center mt-auto book-package-btn" data-service="Refresh & Style Package" data-price="1500">
+                            <i class="fab fa-whatsapp mr-2"></i> Book Now
+                        </button>
+                    </div>
+
+                    <!-- Package 3: Complete Color -->
+                    <div class="card-glow bg-black/70 border border-gray-800 rounded-lg p-6 flex flex-col">
+                        <h3 class="text-2xl font-bold font-playfair mb-4">Complete Color</h3>
+                        <ul class="space-y-3 text-gray-300 flex-grow">
+                            <li class="flex items-center"><i class="fas fa-check-circle icon-gold w-5 mr-3"></i> Hair Color</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle icon-gold w-5 mr-3"></i> Beard Color</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle icon-gold w-5 mr-3"></i> Hair Cut</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle icon-gold w-5 mr-3"></i> Beard Trim</li>
+                        </ul>
+                        <div class="text-center my-6">
+                            <p class="text-gray-400 line-through">Rs. 2,300</p>
+                            <p class="text-4xl font-bold text-gold">Rs. 2,000</p>
+                            <p class="text-green-400 font-semibold">You Save Rs. 300</p>
+                        </div>
+                        <button type="button" class="btn-gold-package font-bold py-3 px-6 rounded-lg w-full text-center mt-auto book-package-btn" data-service="Complete Color Package" data-price="2000">
+                            <i class="fab fa-whatsapp mr-2"></i> Book Now
+                        </button>
+                    </div>
+
+                    <!-- Package 4: VIP Grooming (Highlighted) -->
+                    <div class="card-glow bg-black/70 border-2 border-gold rounded-lg p-6 flex flex-col relative shadow-gold-glow">
+                        <span class="package-most-popular">Most Popular</span>
+                        <h3 class="text-2xl font-bold font-playfair mb-4 text-gold mt-4">VIP Grooming</h3>
+                        <ul class="space-y-3 text-gray-300 flex-grow">
+                            <li class="flex items-center"><i class="fas fa-check-circle icon-gold w-5 mr-3"></i> Hair & Beard Cut</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle icon-gold w-5 mr-3"></i> Facial Treatment</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle icon-gold w-5 mr-3"></i> Head & Shoulders Massage</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle icon-gold w-5 mr-3"></i> Nose Strip</li>
+                        </ul>
+                        <div class="text-center my-6">
+                            <p class="text-gray-400 line-through">Rs. 6,400</p>
+                            <p class="text-4xl font-bold text-gold">Rs. 5,500</p>
+                            <p class="text-green-400 font-semibold">You Save Rs. 900</p>
+                        </div>
+                        <button type="button" class="btn-gold-package font-bold py-3 px-6 rounded-lg w-full text-center mt-auto book-package-btn" data-service="VIP Grooming Package" data-price="5500">
+                            <i class="fab fa-whatsapp mr-2"></i> Book Now
+                        </button>
+                    </div>
+
+                    <!-- Package 5: Popular Choice (Highlighted) -->
+                    <div class="card-glow bg-black/70 border-2 border-gold rounded-lg p-6 flex flex-col relative shadow-gold-glow">
+                        <span class="package-most-popular">Most Popular</span>
+                        <h3 class="text-2xl font-bold font-playfair mb-4 text-gold mt-4">Popular Choice</h3>
+                        <ul class="space-y-3 text-gray-300 flex-grow">
+                            <li class="flex items-center"><i class="fas fa-check-circle icon-gold w-5 mr-3"></i> Mani Pedi</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle icon-gold w-5 mr-3"></i> Hair Cut</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle icon-gold w-5 mr-3"></i> Beard Trim</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle icon-gold w-5 mr-3"></i> Hair Color</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle icon-gold w-5 mr-3"></i> Face Cleansing</li>
+                        </ul>
+                        <div class="text-center my-6">
+                            <p class="text-gray-400 line-through">Rs. 8,800</p>
+                            <p class="text-4xl font-bold text-gold">Rs. 8,000</p>
+                            <p class="text-green-400 font-semibold">You Save Rs. 800</p>
+                        </div>
+                        <button type="button" class="btn-gold-package font-bold py-3 px-6 rounded-lg w-full text-center mt-auto book-package-btn" data-service="Popular Choice Package" data-price="8000">
+                            <i class="fab fa-whatsapp mr-2"></i> Book Now
+                        </button>
+                    </div>
+
+                    <!-- New Package: Dulah Grooming Package -->
+                    <div class="card-glow bg-black/70 border-2 border-gold rounded-lg p-6 flex flex-col relative shadow-gold-glow">
+                        <span class="package-most-popular" style="background-color: #C5B358; color: #0a0a0a;">Exclusive Offer</span>
+                        <h3 class="text-2xl font-bold font-playfair mb-4 text-gold mt-4">Groom's Special</h3>
+                        <p class="mb-4 text-lg font-bold text-gold">Total 3 Days</p>
+                        <ul class="space-y-3 text-gray-300 flex-grow">
+                            <li class="flex items-center"><i class="fas fa-check-circle icon-gold w-5 mr-3"></i> Haircut</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle icon-gold w-5 mr-3"></i> Beard Trim or Shave</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle icon-gold w-5 mr-3"></i> Hair Color</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle icon-gold w-5 mr-3"></i> Beard Color</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle icon-gold w-5 mr-3"></i> Gold Facial</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle icon-gold w-5 mr-3"></i> ZOE Facial</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle icon-gold w-5 mr-3"></i> Manicure</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle icon-gold w-5 mr-3"></i> Makeup</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle icon-gold w-5 mr-3"></i> Hair Wash</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle icon-gold w-5 mr-3"></i> Hair Styling</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle icon-gold w-5 mr-3"></i> Face Waxing</li>
+                        </ul>
+                        <div class="text-center my-6">
+                            <p class="text-gray-400 line-through">Rs. 30,000</p>
+                            <p class="text-4xl font-bold text-gold">Rs. 18,000</p>
+                            <p class="text-green-400 font-semibold">You Save Rs. 12,000</p>
+                        </div>
+                        <button type="button" class="btn-gold-package font-bold py-3 px-6 rounded-lg w-full text-center mt-auto book-package-btn" data-service="Dulah Grooming Package" data-price="18000">
+                            <i class="fab fa-whatsapp mr-2"></i> Book Now
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        
+        <!-- ============================================= -->
+        <!-- ===== NEW SECTION: OUR TEAM STARTS HERE ===== -->
+        <!-- ============================================= -->
+        <section id="team" class="py-24 bg-dark-gray fade-in-section">
+            <div class="container mx-auto text-center px-4">
+                <h2 class="font-playfair text-4xl md:text-5xl mb-4 text-gold-gradient title-underline">Meet Our Expert Team</h2>
+                <p class="text-text-dark mb-16 max-w-2xl mx-auto">The passionate artists behind your perfect look.</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 max-w-5xl mx-auto">
+                    
+                    <!-- Team Member 1 -->
+                    <div class="team-card p-6 rounded-lg text-center transition-all duration-300 ease-in-out">
+                        <div class="relative w-48 h-48 mx-auto mb-4">
+                            <img src="https://res.cloudinary.com/dtacwfyx2/image/upload/v1753901380/WhatsApp_Image_2025-07-30_at_23.42.39_c3dc99ab_lynote.jpg" alt="Nauman Rasool" class="rounded-full w-full h-full object-cover border-4 border-gold/50">
+                        </div>
+                        <h3 class="text-2xl font-semibold text-white mb-1 font-playfair">Nauman Rasool</h3>
+                        <p class="text-gold font-medium mb-4">Founder</p>
+                        <div class="flex justify-center space-x-4 text-xl">
+                            <a href="#" class="text-text-dark hover:text-gold transition-colors"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.facebook.com/naumanrasool786" class="text-text-dark hover:text-gold transition-colors"><i class="fab fa-facebook"></i></a>
+                            <a href="https://www.tiktok.com/@naumanrasool" class="text-text-dark hover:text-gold transition-colors"><i class="fab fa-tiktok"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Team Member 2 -->
+                    <div class="team-card p-6 rounded-lg text-center transition-all duration-300 ease-in-out">
+                        <div class="relative w-48 h-48 mx-auto mb-4">
+                            <img src="https://i.postimg.cc/Vk63nsRX/Whats-App-Image-2025-07-29-at-19-08-47-3b6d9073.jpg" alt="Kamran Jutt" class="rounded-full w-full h-full object-cover border-4 border-gold/50">
+                        </div>
+                        <h3 class="text-2xl font-semibold text-white mb-1 font-playfair">Kamran Jutt</h3>
+                        <p class="text-gold font-medium mb-4">Master Barber & Manager</p>
+                         <div class="flex justify-center space-x-4 text-xl">
+                            <a href="#" class="text-text-dark hover:text-gold transition-colors"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="text-text-dark hover:text-gold transition-colors"><i class="fab fa-facebook"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Team Member 3 -->
+                    <div class="team-card p-6 rounded-lg text-center transition-all duration-300 ease-in-out">
+                        <div class="relative w-48 h-48 mx-auto mb-4">
+                            <img src="https://scontent.flyp4-1.fna.fbcdn.net/v/t39.30808-6/526591842_1268054951585574_7547068875244967043_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=aJAx_dQNAxYQ7kNvwErjfin&_nc_oc=AdmK8pFb2RlS-s887b-eUOgAP0MlvJxI4JiLortQjo0OnOSpQOp86ARQzJmqkVZwVIw&_nc_zt=23&_nc_ht=scontent.flyp4-1.fna&_nc_gid=BKbeie74VrdXGoy4iOrIyA&oh=00_AfTjz67wRuqd9F29p7FlxN9aaxVfXwaIpF4O2JfSkbfWrg&oe=688E9E31" alt="Usama" class="rounded-full w-full h-full object-cover border-4 border-gold/50">
+                        </div>
+                        <h3 class="text-2xl font-semibold text-white mb-1 font-playfair">Usama</h3>
+                        <p class="text-gold font-medium mb-4">Staff</p>
+                         <div class="flex justify-center space-x-4 text-xl">
+                            <a href="#" class="text-text-dark hover:text-gold transition-colors"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="text-text-dark hover:text-gold transition-colors"><i class="fab fa-facebook"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Team Member 4 -->
+                    <div class="team-card p-6 rounded-lg text-center transition-all duration-300 ease-in-out">
+                        <div class="relative w-48 h-48 mx-auto mb-4">
+                            <img src="https://i.postimg.cc/tC3yrcdg/Whats-App-Image-2025-07-29-at-18-27-02-0cf7aed8.jpg" alt="Habib Sultan" class="rounded-full w-full h-full object-cover border-4 border-gold/50">
+                        </div>
+                        <h3 class="text-2xl font-semibold text-white mb-1 font-playfair">Habib Sultan</h3>
+                        <p class="text-gold font-medium mb-4">Staff</p>
+                         <div class="flex justify-center space-x-4 text-xl">
+                            <a href="#" class="text-text-dark hover:text-gold transition-colors"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="text-text-dark hover:text-gold transition-colors"><i class="fab fa-facebook"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Team Member 5 -->
+                    <div class="team-card p-6 rounded-lg text-center transition-all duration-300 ease-in-out">
+                        <div class="relative w-48 h-48 mx-auto mb-4">
+                            <img src="https://i.postimg.cc/4xv6xX6T/Whats-App-Image-2025-07-29-at-18-41-40-ee1eb402.jpg" alt="Sunil" class="rounded-full w-full h-full object-cover border-4 border-gold/50">
+                        </div>
+                        <h3 class="text-2xl font-semibold text-white mb-1 font-playfair">Sunil</h3>
+                        <p class="text-gold font-medium mb-4">Staff</p>
+                         <div class="flex justify-center space-x-4 text-xl">
+                            <a href="https://www.instagram.com/jutt_sab_2917" class="text-text-dark hover:text-gold transition-colors"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.facebook.com/sunil.naseer.2025" class="text-text-dark hover:text-gold transition-colors"><i class="fab fa-facebook"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Team Member 6 -->
+                    <div class="team-card p-6 rounded-lg text-center transition-all duration-300 ease-in-out">
+                        <div class="relative w-48 h-48 mx-auto mb-4">
+                            <img src="https://i.postimg.cc/J7Z7H02v/Whats-App-Image-2025-07-29-at-18-54-58-4791bebc.jpg" alt="Mudasir" class="rounded-full w-full h-full object-cover border-4 border-gold/50">
+                        </div>
+                        <h3 class="text-2xl font-semibold text-white mb-1 font-playfair">Mudasir</h3>
+                        <p class="text-gold font-medium mb-4">Staff</p>
+                         <div class="flex justify-center space-x-4 text-xl">
+                            <a href="#" class="text-text-dark hover:text-gold transition-colors"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="text-text-dark hover:text-gold transition-colors"><i class="fab fa-facebook"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Team Member 7 -->
+                    <div class="team-card p-6 rounded-lg text-center transition-all duration-300 ease-in-out">
+                        <div class="relative w-48 h-48 mx-auto mb-4">
+                            <img src="https://i.postimg.cc/SNwW7DLV/Whats-App-Image-2025-07-29-at-19-11-43-6ebd322f.jpg" alt="Dawood" class="rounded-full w-full h-full object-cover border-4 border-gold/50">
+                        </div>
+                        <h3 class="text-2xl font-semibold text-white mb-1 font-playfair">Dawood</h3>
+                        <p class="text-gold font-medium mb-4">Staff</p>
+                         <div class="flex justify-center space-x-4 text-xl">
+                            <a href="#" class="text-text-dark hover:text-gold transition-colors"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="text-text-dark hover:text-gold transition-colors"><i class="fab fa-facebook"></i></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!-- =========================================== -->
+        <!-- ===== NEW SECTION: OUR TEAM ENDS HERE ===== -->
+        <!-- =========================================== -->
+        
+        <!-- Customer Gallery Section -->
+        <section id="customer-gallery" class="py-24 fade-in-section">
+            <div class="container mx-auto text-center px-4">
+                <h2 class="font-playfair text-4xl md:text-5xl mb-4 text-gold-gradient title-underline">Our Happy Clients</h2>
+                <p class="text-text-dark mb-12 max-w-2xl mx-auto">A glimpse into the transformations we craft every day.</p>
+                
+                <div id="filter-buttons" class="flex justify-center flex-wrap gap-4 mb-12">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="haircut">Haircuts</button>
+                    <button class="filter-btn" data-filter="beard">Beard Styles</button>
+                    <button class="filter-btn" data-filter="coloring">Coloring</button>
+                </div>
+
+                <div id="gallery-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 md:gap-6">
+                    <!-- Default hardcoded images - will be replaced by Firestore images -->
+                    <div class="gallery-item" data-category="haircut"><div class="gallery-card"><div class="gallery-img-container"><img src="https://images.pexels.com/photos/3155893/pexels-photo-3155893.jpeg?auto=compress&cs=tinysrgb&w=600" class="gallery-img"></div></div></div>
+                    <div class="gallery-item" data-category="beard"><div class="gallery-card"><div class="gallery-img-container"><img src="https://images.pexels.com/photos/4946723/pexels-photo-4946723.jpeg?auto=compress&cs=tinysrgb&w=600" class="gallery-img"></div></div></div>
+                    <div class="gallery-item" data-category="coloring"><div class="gallery-card"><div class="gallery-img-container"><img src="https://images.pexels.com/photos/1805600/pexels-photo-1805600.jpeg?auto=compress&cs=tinysrgb&w=600" class="gallery-img"></div></div></div>
+                    <div class="gallery-item" data-category="haircut"><div class="gallery-card"><div class="gallery-img-container"><img src="https://images.pexels.com/photos/897262/pexels-photo-897262.jpeg?auto=compress&cs=tinysrgb&w=600" class="gallery-img"></div></div></div>
+                    <div class="gallery-item" data-category="beard"><div class="gallery-card"><div class="gallery-img-container"><img src="https://images.pexels.com/photos/2789328/pexels-photo-2789328.jpeg?auto=compress&cs=tinysrgb&w=600" class="gallery-img"></div></div></div>
+                    <div class="gallery-item" data-category="haircut"><div class="gallery-card"><div class="gallery-img-container"><img src="https://images.pexels.com/photos/2324411/pexels-photo-2324411.jpeg?auto=compress&cs=tinysrgb&w=600" class="gallery-img"></div></div></div>
+                    <div class="gallery-item" data-category="coloring"><div class="gallery-card"><div class="gallery-img-container"><img src="https://images.pexels.com/photos/3992875/pexels-photo-3992875.jpeg?auto=compress&cs=tinysrgb&w=600" class="gallery-img"></div></div></div>
+                    <div class="gallery-item" data-category="beard"><div class="gallery-card"><div class="gallery-img-container"><img src="https://images.pexels.com/photos/3998414/pexels-photo-3998414.jpeg?auto=compress&cs=tinysrgb&w=600" class="gallery-img"></div></div></div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="bg-dark-gray py-24 fade-in-section">
+            <div class="container mx-auto text-center px-4">
+                <h2 class="font-playfair text-4xl md:text-5xl mb-4 text-gold-gradient title-underline">What Our Clients Say</h2>
+                <p class="text-text-dark mb-16 max-w-2xl mx-auto">We are proud of the feedback from our valued customers.</p>
+                <div class="elfsight-app-cc6dedf0-59f2-4afb-bb5a-ac06091e73ea" data-elfsight-app-lazy></div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-24 fade-in-section">
+            <div class="container mx-auto text-center px-4">
+                <h2 class="font-playfair text-4xl md:text-5xl mb-4 text-gold-gradient title-underline">Get In Touch</h2>
+                <!-- === KEYWORD ADD KAR DIYA HAI === -->
+                <p class="text-text-dark mb-12 max-w-2xl mx-auto">Ready for a transformation? Get in touch with the best salon in Faisalabad. Contact us or book your slot now for an unmatched grooming experience!</p>
+                <div class="max-w-4xl mx-auto glass-card p-10 rounded-lg">
+                    <div class="grid md:grid-cols-3 gap-8 mb-8">
+                        <div class="text-center"><i class="fas fa-phone-alt text-gold text-3xl mb-3"></i><h3 class="text-xl font-semibold">Call Us</h3><a href="tel:+923082270007" class="text-text-dark hover:text-gold">+92 308 2270007</a></div>
+                        <div class="text-center"><i class="fas fa-map-marker-alt text-gold text-3xl mb-3"></i><h3 class="text-xl font-semibold">Visit Us</h3><p class="text-text-dark">Model City 1 Eden Valley, Faisalabad, Pakistan</p></div>
+                        <div class="text-center"><i class="fab fa-whatsapp text-gold text-3xl mb-3"></i><h3 class="text-xl font-semibold">WhatsApp</h3><a href="https://wa.me/923082270007" target="_blank" class="text-text-dark hover:text-gold">Message Us</a></div>
+                    </div>
+                    <div class="w-full h-80 rounded-lg overflow-hidden border-2 border-gold/50">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3404.283029982361!2d73.1232808746078!3d31.43360495034841!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x392269b5a0dfbb8d%3A0x4a079cc78b3c51fd!2sQuiff%20Cuts%20Salon!5e0!3m2!1sen!2s!4v1721151699041!5m2!1sen!2s" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-dark-gray py-8">
+        <div class="container mx-auto text-center text-text-dark">
+            <div class="flex justify-center space-x-6 my-4">
+                <a href="https://www.instagram.com/quiff_cuts" target="_blank" class="text-gold hover:text-white transition"><i class="fab fa-instagram fa-lg"></i></a>
+                <a href="https://www.facebook.com/quiffcuts1" target="_blank" class="text-gold hover:text-white transition"><i class="fab fa-facebook fa-lg"></i></a>
+                <a href="https://www.tiktok.com/@quiffcuts" target="_blank" class="text-gold hover:text-white transition"><i class="fab fa-tiktok fa-lg"></i></a>
+            </div>
+            <p class="text-sm">© 2024 Quiff Cuts. All Rights Reserved. Designed with <i class="fas fa-heart text-gold"></i>.</p>
+            <div class="mt-4">
+                <button id="admin-login-btn" class="text-gold/50 hover:text-gold transition" title="Admin Panel">
+                    <i class="fas fa-lock"></i> Admin Login
+                </button>
+                <button id="admin-logout-btn" class="hidden text-red-500/70 hover:text-red-500 transition ml-4" title="Admin Logout">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Booking Modal -->
+    <div id="booking-modal" class="modal-overlay">
+        <div class="modal-content">
+            <h3 class="text-3xl font-playfair text-gold-gradient mb-6 text-center">Book Your Appointment</h3>
+            <form id="booking-form" class="space-y-5">
+                <div>
+                    <label for="booking-name" class="block text-sm font-medium text-text-dark mb-2">Full Name</label>
+                    <input type="text" id="booking-name" name="name" required placeholder="Apna poora naam likhein">
+                </div>
+                <div>
+                    <label for="booking-phone" class="block text-sm font-medium text-text-dark mb-2">Phone Number</label>
+                    <input type="tel" id="booking-phone" name="phone" required placeholder="Apna phone number likhein">
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label for="booking-date" class="block text-sm font-medium text-text-dark mb-2">Preferred Date</label>
+                        <input type="date" id="booking-date" name="date" required>
+                    </div>
+                    <div>
+                        <label for="booking-time-label" class="block text-sm font-medium text-text-dark mb-2">Preferred Time</label>
+                        <div class="custom-time-picker-wrapper">
+                            <div class="custom-time-picker">
+                                <div class="time-part">
+                                    <button type="button" class="time-arrow up" data-unit="hour" aria-label="Increase hour">▲</button>
+                                    <input type="text" id="booking-hour" readonly value="10">
+                                    <button type="button" class="time-arrow down" data-unit="hour" aria-label="Decrease hour">▼</button>
+                                </div>
+                                <span>:</span>
+                                <div class="time-part">
+                                    <button type="button" class="time-arrow up" data-unit="minute" aria-label="Increase minute">▲</button>
+                                    <input type="text" id="booking-minute" readonly value="30">
+                                    <button type="button" class="time-arrow down" data-unit="minute" aria-label="Decrease minute">▼</button>
+                                </div>
+                                <div class="time-part">
+                                    <button type="button" class="time-arrow up" data-unit="ampm" aria-label="Toggle AM/PM">▲</button>
+                                    <input type="text" id="booking-ampm" readonly value="AM">
+                                    <button type="button" class="time-arrow down" data-unit="ampm" aria-label="Toggle AM/PM">▼</button>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden" id="booking-time" name="time">
+                    </div>
+                </div>
+                <div>
+                    <label for="booking-service" class="block text-sm font-medium text-text-dark mb-2">Select Service</label>
+                    <select id="booking-service" name="service" required>
+                        <option value="" disabled selected>Ek service chunein</option>
+                        <option value="Hair Cut">Hair Cut (Rs. 500)</option>
+                        <option value="Beard Trim">Beard Trim (Rs. 300)</option>
+                        <option value="Shaving">Shaving (Rs. 300)</option>
+                        <option value="Nose Strip">Nose Strip (Rs. 100)</option>
+                        <option value="Hair Color">Hair Color (Rs. 1000)</option>
+                        <option value="Groom Package">Groom Package (Rs. 18000)</option>
+                        <option value="Beard Color">Beard Color (Rs. 500)</option>
+                        <option value="Face Cleansing">Face Cleansing (Rs. 1000-2000)</option>
+                        <option value="Facial Treatment">Facial Treatment (Rs. 4000-8000)</option>
+                        <option value="Makeup">Makeup (Rs. 500-1500)</option>
+                        <option value="Hair Style">Hair Style (Rs. 300)</option>
+                        <option value="Head Wash">Head Wash (Rs. 100)</option>
+                        <option value="Massage">Massage (Rs. 300-1000)</option>
+                        <option value="Mani Pedi">Mani Pedi (Rs. 6000)</option>
+                        <option value="Hair & Beard Cut">Hair & Beard Cut (Rs. 800)</option>
+                        <option value="Wax">Wax (Rs. 200-1000)</option>
+                        <!-- New Package Options -->
+                        <option value="Basic Grooming Package">Basic Grooming Package (Rs. 1000)</option>
+                        <option value="Refresh & Style Package">Refresh & Style Package (Rs. 1,500)</option>
+                        <option value="Complete Color Package">Complete Color Package (Rs. 2,000)</option>
+                        <option value="VIP Grooming Package">VIP Grooming Package (Rs. 5,500)</option>
+                        <option value="Popular Choice Package">Popular Choice Package (Rs. 8,000)</option>
+                        <option value="Dulah Grooming Package">Dulah Grooming Package (Rs. 18,000)</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="booking-message" class="block text-sm font-medium text-text-dark mb-2">Message (Optional)</label>
+                    <textarea id="booking-message" name="message" rows="3" placeholder="Koi khaas hidayat?"></textarea>
+                </div>
+                <div class="text-center pt-4">
+                    <button type="submit" class="btn-primary w-full">Generate Booking Pass</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Booking Pass Modal -->
+    <div id="booking-pass-overlay" class="modal-overlay">
+        <div id="booking-pass-container">
+            <div class="booking-pass-card" id="booking-pass-card">
+                <div class="pass-header">
+                    <img src="https://i.postimg.cc/cJnLH5RX/png.png" alt="Quiff Cuts Logo">
+                    <h3 class="text-2xl">Appointment Confirmed</h3>
+                </div>
+                <div class="pass-details space-y-2">
+                    <div class="detail-item">
+                        <span class="detail-label">Name</span>
+                        <span id="pass-name" class="detail-value"></span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Date</span>
+                        <span id="pass-date" class="detail-value"></span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Time</span>
+                        <span id="pass-time" class="detail-value"></span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Service</span>
+                        <span id="pass-service" class="detail-value"></span>
+                    </div>
+                     <div class="detail-item">
+                        <span class="detail-label">Booking ID</span>
+                        <span id="pass-booking-id" class="detail-value"></span>
+                    </div>
+                </div>
+                <div class="pass-qr-code">
+                    <div id="pass-qrcode-container"></div>
+                </div>
+            </div>
+            <div class="mt-6 flex flex-col sm:flex-row gap-4 justify-center">
+                <button id="download-pass-btn" class="btn-primary flex-1"><i class="fas fa-download mr-2"></i> Download Pass</button>
+                <button id="close-pass-btn" class="btn-secondary flex-1">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Login Modal (Replaced old password modal) -->
+    <div id="login-modal" class="modal-overlay">
+        <div class="modal-content text-center">
+            <h3 class="text-2xl font-playfair text-gold-gradient mb-4">Admin Login</h3>
+            <form id="login-form" class="space-y-4">
+                <div>
+                    <label for="login-email" class="sr-only">Email</label>
+                    <input type="email" id="login-email" required placeholder="Enter Email" class="text-center">
+                </div>
+                <div>
+                    <label for="login-password" class="sr-only">Password</label>
+                    <input type="password" id="login-password" required placeholder="Enter Password" class="text-center">
+                </div>
+                <p id="login-error" class="text-red-500 text-sm h-5 mb-2"></p>
+                <button type="submit" class="btn-primary w-full">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Panel Modal (Now hidden by default and shown after login) -->
+    <div id="admin-panel-modal" class="modal-overlay">
+        <div class="modal-content text-center">
+            <h3 class="text-2xl font-playfair text-gold-gradient mb-6">Admin Panel</h3>
+            <div class="space-y-4">
+                <button id="upload-new-btn" class="btn-primary w-full">Upload New Picture</button>
+                <button id="manage-images-btn" class="btn-primary w-full bg-red-600 border-red-600 hover:bg-transparent hover:text-red-500">Manage Images</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Upload Modal -->
+    <div id="upload-modal" class="modal-overlay">
+        <div class="modal-content text-center">
+            <h3 class="text-2xl font-playfair text-gold-gradient mb-4">Upload New Picture</h3>
+            <form id="upload-form">
+                <div class="mb-4">
+                    <label for="upload-destination" class="block text-left mb-2 text-text-dark">Upload To:</label>
+                    <select id="upload-destination" required>
+                        <option value="clients-gallery">Our Happy Clients Gallery</option>
+                        <option value="story-slideshow">Our Story Section</option>
+                        <option value="hero-slideshow">The Art of Grooming (Hero)</option>
+                    </select>
+                </div>
+                <div class="mb-4">
+                    <label for="image-file" class="block text-left mb-2 text-text-dark">Select Image File:</label>
+                    <input type="file" id="image-file" accept="image/*" required>
+                </div>
+                <div id="gallery-category-wrapper" class="mb-6">
+                    <label for="image-category" class="block text-left mb-2 text-text-dark">Select Category:</label>
+                    <select id="image-category" required>
+                        <option value="haircut">Haircut</option>
+                        <option value="beard">Beard Style</option>
+                        <option value="coloring">Coloring</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-primary w-full" id="upload-submit-btn">Upload Picture</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Access Firebase instances and functions from global scope
+            const db = window.firebaseFirestore; // Firestore instance
+            const auth = window.firebaseAuth; // Get Auth instance
+            const signInWithEmailAndPassword = window.firebaseSignInWithEmailAndPassword;
+            const signOut = window.firebaseSignOut;
+            const onAuthStateChanged = window.firebaseOnAuthStateChanged;
+            const addDoc = window.firebaseFirestore.addDoc; // Expose addDoc from Firestore
+            const collection = window.firebaseFirestore.collection; // Expose collection from Firestore
+            const getDocs = window.firebaseFirestore.getDocs; // Expose getDocs for reading
+            const query = window.firebaseFirestore.query; // Expose query
+            const deleteDoc = window.firebaseFirestore.deleteDoc; // Expose deleteDoc
+            const doc = window.firebaseFirestore.doc; // Expose doc for document reference
+
+            // Cloudinary Credentials (REPLACE 'your_upload_preset_name' with the actual name you created in Cloudinary, e.g., 'quiff_gallery_uploads')
+            const CLOUDINARY_CLOUD_NAME = 'dtacwfyx2';
+            const CLOUDINARY_UPLOAD_PRESET = 'quiffcuts_preset'; // <-- Make sure this preset is 'Unsigned' and 'Public' in Cloudinary settings
+
+            // --- Hero Section Slideshow ---
+            const heroSection = document.querySelector('.hero-section');
+            // We will now load these from Firestore
+            let heroImages = []; // Initialize empty, will be populated from Firestore
+            let currentHeroImageIndex = 0;
+            let heroSlideshowInterval;
+
+            async function loadHeroImages() {
+                try {
+                    const heroSnapshot = await getDocs(collection(db, "heroImages")); // Assuming a 'heroImages' collection
+                    heroImages = heroSnapshot.docs.map(doc => `url(${doc.data().url})`);
+                    if (heroImages.length === 0) {
+                        // Fallback to default images if no images in Firestore
+                        heroImages = [
+                            'url(https://images.pexels.com/photos/3998419/pexels-photo-3998419.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)',
+                            'url(https://images.pexels.com/photos/4158351/pexels-photo-4158351.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)',
+                            'url(https://images.pexels.com/photos/853427/pexels-photo-853427.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)',
+                            'url(https://images.pexels.com/photos/2896423/pexels-photo-2896423.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)',
+                            'url(https://images.pexels.com/photos/1319460/pexels-photo-1319460.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)'
+                        ];
+                    }
+                    initializeHeroSlideshow();
+                } catch (error) {
+                    console.error("Error loading hero images from Firestore:", error);
+                    // Fallback to default images on error
+                    heroImages = [
+                        'url(https://images.pexels.com/photos/3998419/pexels-photo-3998419.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)',
+                        'url(https://images.pexels.com/photos/4158351/pexels-photo-4158351.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)',
+                        'url(https://images.pexels.com/photos/853427/pexels-photo-853427.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)',
+                        'url(https://images.pexels.com/photos/2896423/pexels-photo-2896423.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)',
+                        'url(https://images.pexels.com/photos/1319460/pexels-photo-1319460.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)'
+                    ];
+                    initializeHeroSlideshow();
+                }
+            }
+
+            function initializeHeroSlideshow() {
+                if (heroSlideshowInterval) clearInterval(heroSlideshowInterval);
+                if (heroImages.length > 0) { // Only run if there are images
+                    heroImages.forEach(src => { new Image().src = src.replace(/url\((['"])?(.*?)\1\)/gi, '$2'); });
+                    heroSection.style.backgroundImage = heroImages[currentHeroImageIndex];
+                    heroSlideshowInterval = setInterval(() => {
+                        currentHeroImageIndex = (currentHeroImageIndex + 1) % heroImages.length;
+                        heroSection.style.backgroundImage = heroImages[currentHeroImageIndex];
+                    }, 5000);
+                } else {
+                    heroSection.style.backgroundImage = 'none'; // No images to display
+                }
+            }
+            loadHeroImages(); // Call this on page load
+
+            // --- About Us Slideshow ---
+            const aboutSlideshowContainer = document.getElementById('about-slideshow-container');
+            // We will now load these from Firestore
+            let aboutImagesData = []; // Will store {url, docId}
+            let currentAboutSlideIndex = 0;
+            let aboutSlideshowInterval;
+
+            async function loadAboutImages() {
+                try {
+                    const aboutSnapshot = await getDocs(collection(db, "aboutImages")); // Assuming an 'aboutImages' collection
+                    aboutImagesData = aboutSnapshot.docs.map(doc => ({ url: doc.data().url, docId: doc.id }));
+                    if (aboutImagesData.length === 0) {
+                        // Fallback to default images if no images in Firestore
+                        aboutImagesData = [
+                            { url: 'https://images.pexels.com/photos/3998423/pexels-photo-3998423.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2', docId: 'default1' },
+                            { url: 'https://images.pexels.com/photos/5240544/pexels-photo-5240544.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2', docId: 'default2' },
+                            { url: 'https://images.pexels.com/photos/3998416/pexels-photo-3998416.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2', docId: 'default3' },
+                            { url: 'https://images.pexels.com/photos/2076596/pexels-photo-2076596.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2', docId: 'default4' },
+                            { url: 'https://images.pexels.com/photos/668196/pexels-photo-668196.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2', docId: 'default5' }
+                        ];
+                    }
+                    initializeAboutSlideshow();
+                } catch (error) {
+                    console.error("Error loading about images from Firestore:", error);
+                    // Fallback to default images on error
+                    aboutImagesData = [
+                        { url: 'https://images.pexels.com/photos/3998423/pexels-photo-3998423.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2', docId: 'default1' },
+                        { url: 'https://images.pexels.com/photos/5240544/pexels-photo-5240544.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2', docId: 'default2' },
+                        { url: 'https://images.pexels.com/photos/3998416/pexels-photo-3998416.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2', docId: 'default3' },
+                        { url: 'https://images.pexels.com/photos/2076596/pexels-photo-2076596.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2', docId: 'default4' },
+                        { url: 'https://images.pexels.com/photos/668196/pexels-photo-668196.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2', docId: 'default5' }
+                    ];
+                    initializeAboutSlideshow();
+                }
+            }
+
+            function initializeAboutSlideshow() {
+                aboutSlideshowContainer.innerHTML = '';
+                if (aboutImagesData.length === 0) { // If no images, clear and return
+                    if (aboutSlideshowInterval) clearInterval(aboutSlideshowInterval);
+                    return;
+                }
+
+                aboutImagesData.forEach((imageData, index) => {
+                    const wrapper = document.createElement('div');
+                    wrapper.className = 'about-slide-wrapper';
+                    wrapper.dataset.docId = imageData.docId; // Store Firestore doc ID
+                    wrapper.innerHTML = `
+                        <img src="${imageData.url}" class="about-slide">
+                        <span class="delete-icon"><i class="fas fa-trash"></i></span>
+                    `;
+                    aboutSlideshowContainer.appendChild(wrapper);
+                });
+                
+                const aboutSlides = document.querySelectorAll('#about-slideshow-container .about-slide-wrapper');
+                if (aboutSlideshowInterval) clearInterval(aboutSlideshowInterval);
+                
+                currentAboutSlideIndex = 0;
+                if(aboutSlides.length > 0) aboutSlides[currentAboutSlideIndex].classList.add('active');
+
+                aboutSlideshowInterval = setInterval(() => {
+                    if(aboutSlides.length === 0) return;
+                    aboutSlides[currentAboutSlideIndex].classList.remove('active');
+                    currentAboutSlideIndex = (currentAboutSlideIndex + 1) % aboutSlides.length;
+                    aboutSlides[currentAboutSlideIndex].classList.add('active');
+                }, 5000);
+                
+                // Re-add delete icons if in delete mode
+                if (document.body.classList.contains('delete-mode')) {
+                    addDeleteIcons();
+                }
+            }
+            loadAboutImages(); // Call this on page load
+
+            // --- Filterable Gallery ---
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const galleryGrid = document.getElementById('gallery-grid');
+            let galleryImagesData = []; // Will store {url, category, docId}
+
+            async function loadGalleryImages() {
+                try {
+                    const gallerySnapshot = await getDocs(collection(db, "galleryImages")); // Your Firestore collection
+                    galleryImagesData = gallerySnapshot.docs.map(doc => ({
+                        url: doc.data().url,
+                        category: doc.data().category,
+                        docId: doc.id // Store Firestore document ID
+                    }));
+                    renderGallery(); // Render images once loaded
+                } catch (error) {
+                    console.error("Error loading gallery images from Firestore:", error);
+                    // Fallback to hardcoded images if Firestore fails
+                    galleryImagesData = [
+                        { url: 'https://images.pexels.com/photos/3155893/pexels-photo-3155893.jpeg?auto=compress&cs=tinysrgb&w=600', category: 'haircut', docId: 'default_h1' },
+                        { url: 'https://images.pexels.com/photos/4946723/pexels-photo-4946723.jpeg?auto=compress&cs=tinysrgb&w=600', category: 'beard', docId: 'default_b1' },
+                        { url: 'https://images.pexels.com/photos/1805600/pexels-photo-1805600.jpeg?auto=compress&cs=tinysrgb&w=600', category: 'coloring', docId: 'default_c1' },
+                        { url: 'https://images.pexels.com/photos/897262/pexels-photo-897262.jpeg?auto=compress&cs=tinysrgb&w=600', category: 'haircut', docId: 'default_h2' },
+                        { url: 'https://images.pexels.com/photos/2789328/pexels-photo-2789328.jpeg?auto=compress&cs=tinysrgb&w=600', category: 'beard', docId: 'default_b2' },
+                        { url: 'https://images.pexels.com/photos/2324411/pexels-photo-2324411.jpeg?auto=compress&cs=tinysrgb&w=600', category: 'haircut', docId: 'default_h3' },
+                        { url: 'https://images.pexels.com/photos/3992875/pexels-photo-3992875.jpeg?auto=compress&cs=tinysrgb&w=600', category: 'coloring', docId: 'default_c2' },
+                        { url: 'https://images.pexels.com/photos/3998414/pexels-photo-3998414.jpeg?auto=compress&cs=tinysrgb&w=600', category: 'beard', docId: 'default_b3' }
+                    ];
+                    renderGallery();
+                }
+            }
+
+            function renderGallery() {
+                galleryGrid.innerHTML = ''; // Clear existing images
+                const currentFilter = document.querySelector('.filter-btn.active')?.dataset.filter || 'all';
+
+                galleryImagesData.forEach(imageData => {
+                    const newItem = document.createElement('div');
+                    newItem.className = `gallery-item ${currentFilter !== 'all' && imageData.category !== currentFilter ? 'hidden' : ''}`;
+                    newItem.dataset.category = imageData.category;
+                    newItem.dataset.docId = imageData.docId; // Store Firestore doc ID
+                    newItem.innerHTML = `
+                        <div class="gallery-card">
+                            <div class="gallery-img-container">
+                                <img src="${imageData.url}" class="gallery-img">
+                            </div>
+                        </div>`;
+                    galleryGrid.appendChild(newItem); // Append to show oldest first
+                });
+
+                if (document.body.classList.contains('delete-mode')) {
+                    addDeleteIcons(); // Re-add delete icons if in delete mode
+                }
+            }
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    renderGallery(); // Re-render to apply filter
+                });
+            });
+            loadGalleryImages(); // Call this on page load
+
+
+            // --- Mobile Menu ---
+            document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.toggle('hidden');
+            });
+
+            // --- Scroll Animations ---
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add('is-visible');
+                });
+            }, { threshold: 0.15 });
+            document.querySelectorAll('.fade-in-section').forEach(section => observer.observe(section));
+
+            // --- Booking Modal & Advanced Controls Logic ---
+            const bookingModal = document.getElementById('booking-modal');
+            const bookingForm = document.getElementById('booking-form');
+            const bookNowButtons = document.querySelectorAll('a[href="#booking"]'); // Existing Book Now buttons
+            const packageBookButtons = document.querySelectorAll('.book-package-btn'); // New Book Now buttons for packages
+            const bookingDateInput = document.getElementById('booking-date');
+            const bookingPassOverlay = document.getElementById('booking-pass-overlay');
+
+            // Custom Time Picker Elements
+            const hourInput = document.getElementById('booking-hour');
+            const minuteInput = document.getElementById('booking-minute');
+            const ampmInput = document.getElementById('booking-ampm');
+            const hiddenTimeInput = document.getElementById('booking-time');
+            const timePicker = document.querySelector('.custom-time-picker');
+            const bookingServiceSelect = document.getElementById('booking-service'); // Added for packages
+
+            function formatDate(date) {
+                const year = date.getFullYear();
+                const month = (date.getMonth() + 1).toString().padStart(2, '0');
+                const day = date.getDate().toString().padStart(2, '0');
+                return `${year}-${month}-${day}`;
+            }
+
+            // Function to open booking modal and set date constraints
+            function openBookingModal() {
+                const today = new Date();
+                const maxDate = new Date();
+                maxDate.setDate(today.getDate() + 5);
+
+                bookingDateInput.setAttribute('min', formatDate(today));
+                bookingDateInput.setAttribute('max', formatDate(maxDate));
+                
+                bookingModal.classList.add('visible');
+            }
+
+            // Event listeners for existing "Book Now" buttons
+            bookNowButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    bookingServiceSelect.value = ""; // Reset service selection
+                    openBookingModal();
+                });
+            });
+
+            // Event listeners for new "Book Now" buttons in packages section
+            packageBookButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const serviceName = e.target.dataset.service; // e.g., "Basic Grooming Package"
+                    
+                    // Set the selected service in the booking form
+                    let optionExists = false;
+                    for (let i = 0; i < bookingServiceSelect.options.length; i++) {
+                        if (bookingServiceSelect.options[i].value === serviceName) {
+                            bookingServiceSelect.value = serviceName;
+                            optionExists = true;
+                            break;
+                        }
+                    }
+                    // If for some reason the option wasn't pre-added, add it dynamically (should not happen if HTML is correct)
+                    if (!optionExists) {
+                        const newOption = document.createElement('option');
+                        newOption.value = serviceName;
+                        newOption.textContent = `${serviceName} (Rs. ${e.target.dataset.price})`; // Use data-price for display
+                        bookingServiceSelect.appendChild(newOption);
+                        bookingServiceSelect.value = serviceName;
+                    }
+
+                    openBookingModal();
+                });
+            });
+
+
+            bookingModal.addEventListener('click', (e) => {
+                if (e.target === bookingModal) {
+                    bookingModal.classList.remove('visible');
+                }
+            });
+
+            function updateHiddenTime() {
+                hiddenTimeInput.value = `${hourInput.value}:${minuteInput.value} ${ampmInput.value}`;
+            }
+
+            timePicker.addEventListener('click', (e) => {
+                if (!e.target.matches('.time-arrow')) return;
+                const button = e.target;
+                const unit = button.dataset.unit;
+                const isUp = button.classList.contains('up');
+                let hour = parseInt(hourInput.value);
+                let minute = parseInt(minuteInput.value);
+                
+                if (unit === 'hour') {
+                    hour = isUp ? (hour % 12) + 1 : (hour === 1 ? 12 : hour - 1);
+                    hourInput.value = hour.toString().padStart(2, '0');
+                }
+                if (unit === 'minute') {
+                    minute = isUp ? (minute + 15) % 60 : (minute - 15 + 60) % 60;
+                    minuteInput.value = minute.toString().padStart(2, '0');
+                }
+                if (unit === 'ampm') {
+                    ampmInput.value = ampmInput.value === 'AM' ? 'PM' : 'AM';
+                }
+                updateHiddenTime();
+            });
+            updateHiddenTime();
+
+            // --- Booking Pass Logic ---
+            const qrCodeContainer = document.getElementById('pass-qrcode-container');
+            // Clear existing QR code if any, before creating a new one
+            qrCodeContainer.innerHTML = ''; 
+            let qrcode = new QRCode(qrCodeContainer, {
+                width: 120,
+                height: 120,
+                colorDark : "#000000",
+                colorLight : "#ffffff",
+                correctLevel : QRCode.CorrectLevel.H
+            });
+
+            bookingForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const name = document.getElementById('booking-name').value;
+                const phone = document.getElementById('booking-phone').value;
+                const date = document.getElementById('booking-date').value;
+                const time = hiddenTimeInput.value;
+                const service = document.getElementById('booking-service').value;
+                const message = document.getElementById('booking-message').value;
+                const bookingId = 'QC-' + Date.now().toString().slice(-6);
+
+                // 1. Send WhatsApp message to owner
+                const whatsappNumber = "923082270007"; // Aapka WhatsApp number
+                let whatsappMessage = `*--- New Booking Request ---*
+*Booking ID:* ${bookingId}
+*Name:* ${name}
+*Phone:* ${phone}
+*Date:* ${date}
+*Time:* ${time}
+*Service:* ${service}`;
+                if (message) {
+                    whatsappMessage += `\n\n*Message:* ${message}`;
+                }
+                const encodedMessage = encodeURIComponent(whatsappMessage);
+                const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+                window.open(whatsappUrl, '_blank');
+
+                // 2. Populate and show the booking pass
+                document.getElementById('pass-name').textContent = name;
+                document.getElementById('pass-date').textContent = new Date(date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+                document.getElementById('pass-time').textContent = time;
+                document.getElementById('pass-service').textContent = service;
+                document.getElementById('pass-booking-id').textContent = bookingId;
+
+                const qrCodeText = `Booking ID: ${bookingId}\nName: ${name}\nDate: ${date}\nTime: ${time}\nService: ${service}`;
+                qrcode.makeCode(qrCodeText);
+
+                bookingModal.classList.remove('visible');
+                bookingPassOverlay.classList.add('visible');
+                bookingForm.reset();
+            });
+
+            document.getElementById('download-pass-btn').addEventListener('click', function() {
+                const passElement = document.getElementById('booking-pass-card');
+                html2canvas(passElement, { backgroundColor: null }).then(canvas => {
+                    const link = document.createElement('a');
+                    link.download = `QuiffCuts-Booking-Pass-${document.getElementById('pass-booking-id').textContent}.png`;
+                    link.href = canvas.toDataURL('image/png');
+                    link.click();
+                });
+            });
+
+            document.getElementById('close-pass-btn').addEventListener('click', function() {
+                bookingPassOverlay.classList.remove('visible');
+            });
+
+
+            // --- Admin Panel & Authentication Logic ---
+            const adminLoginBtn = document.getElementById('admin-login-btn');
+            const adminLogoutBtn = document.getElementById('admin-logout-btn');
+            const loginModal = document.getElementById('login-modal');
+            const loginForm = document.getElementById('login-form');
+            const loginEmailInput = document.getElementById('login-email');
+            const loginPasswordInput = document.getElementById('login-password');
+            const loginError = document.getElementById('login-error');
+            const adminPanelModal = document.getElementById('admin-panel-modal');
+            const uploadModal = document.getElementById('upload-modal');
+            const uploadForm = document.getElementById('upload-form');
+            const uploadDestination = document.getElementById('upload-destination');
+            const galleryCategoryWrapper = document.getElementById('gallery-category-wrapper');
+            const manageImagesBtn = document.getElementById('manage-images-btn');
+            const finishManagingBtn = document.getElementById('finish-managing-btn');
+            const imageFileInput = document.getElementById('image-file');
+            const uploadSubmitButton = document.getElementById('upload-submit-btn');
+
+            // Function to update UI based on login status
+            function updateAdminUI(user) {
+                if (user) {
+                    adminLoginBtn.classList.add('hidden');
+                    adminLogoutBtn.classList.remove('hidden');
+                } else {
+                    adminLoginBtn.classList.remove('hidden');
+                    adminLogoutBtn.classList.add('hidden');
+                    adminPanelModal.classList.remove('visible');
+                    uploadModal.classList.remove('visible');
+                    document.body.classList.remove('delete-mode');
+                    finishManagingBtn.classList.add('hidden');
+                }
+            }
+
+            // Listen for auth state changes
+            onAuthStateChanged(auth, (user) => {
+                updateAdminUI(user);
+            });
+            
+            // Open login modal
+            adminLoginBtn.addEventListener('click', () => {
+                loginModal.classList.add('visible');
+                loginError.textContent = '';
+                loginForm.reset();
+            });
+
+            // Close login modal if clicked outside
+            loginModal.addEventListener('click', (e) => {
+                if (e.target === loginModal) {
+                    loginModal.classList.remove('visible');
+                }
+            });
+
+            // Login form submission
+            loginForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const email = loginEmailInput.value;
+                const password = loginPasswordInput.value;
+
+                try {
+                    await signInWithEmailAndPassword(auth, email, password);
+                    loginModal.classList.remove('visible');
+                    adminPanelModal.classList.add('visible');
+                    loginError.textContent = '';
+                } catch (error) {
+                    console.error("Login Error: ", error.code, error.message);
+                    loginError.textContent = "Login failed: Invalid email or password.";
+                }
+            });
+
+            // Logout button click
+            adminLogoutBtn.addEventListener('click', async () => {
+                try {
+                    await signOut(auth);
+                    console.log("User signed out successfully.");
+                } catch (error) {
+                    console.error("Logout Error: ", error);
+                    alert("Failed to logout: " + error.message);
+                }
+            });
+
+
+            adminPanelModal.addEventListener('click', (e) => {
+                if (e.target === adminPanelModal) adminPanelModal.classList.remove('visible');
+            });
+
+            document.getElementById('upload-new-btn').addEventListener('click', () => {
+                adminPanelModal.classList.remove('visible');
+                uploadModal.classList.add('visible');
+                uploadForm.reset();
+                galleryCategoryWrapper.style.display = (uploadDestination.value === 'clients-gallery') ? 'block' : 'none';
+                uploadSubmitButton.textContent = 'Upload Picture';
+                uploadSubmitButton.disabled = false;
+            });
+            
+            uploadModal.addEventListener('click', (e) => {
+                 if (e.target === uploadModal) uploadModal.classList.remove('visible');
+            });
+
+            uploadDestination.addEventListener('change', () => {
+                galleryCategoryWrapper.style.display = (uploadDestination.value === 'clients-gallery') ? 'block' : 'none';
+            });
+
+            uploadForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                uploadSubmitButton.textContent = 'Uploading...';
+                uploadSubmitButton.disabled = true;
+
+                const file = imageFileInput.files[0];
+                const destination = uploadDestination.value;
+                const imageCategory = document.getElementById('image-category').value;
+
+                if (!file) {
+                    alert('Please select an image file to upload.');
+                    uploadSubmitButton.textContent = 'Upload Picture';
+                    uploadSubmitButton.disabled = false;
+                    return;
+                }
+
+                try {
+                    const formData = new FormData();
+                    formData.append('file', file);
+                    formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
+                    
+                    const CLOUDINARY_URL = `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`;
+
+                    const response = await fetch(CLOUDINARY_URL, {
+                        method: 'POST',
+                        body: formData
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`Cloudinary upload failed: ${response.statusText}`);
+                    }
+
+                    const data = await response.json();
+                    const uploadedImageUrl = data.secure_url;
+                    const publicId = data.public_id;
+
+                    console.log('Image uploaded to Cloudinary:', uploadedImageUrl);
+
+                    let collectionName = '';
+                    let docData = {};
+
+                    if (destination === 'clients-gallery') {
+                        collectionName = "galleryImages";
+                        docData = { url: uploadedImageUrl, category: imageCategory, publicId: publicId, timestamp: new Date().toISOString() };
+                        const docRef = await addDoc(collection(db, collectionName), docData);
+                        galleryImagesData.unshift({ ...docData, docId: docRef.id });
+                        renderGallery();
+                    } else if (destination === 'story-slideshow') {
+                        collectionName = "aboutImages";
+                        docData = { url: uploadedImageUrl, publicId: publicId, timestamp: new Date().toISOString() };
+                        const docRef = await addDoc(collection(db, collectionName), docData);
+                        aboutImagesData.unshift({ ...docData, docId: docRef.id });
+                        initializeAboutSlideshow();
+                    } else if (destination === 'hero-slideshow') {
+                        collectionName = "heroImages";
+                        docData = { url: uploadedImageUrl, publicId: publicId, timestamp: new Date().toISOString() };
+                        const docRef = await addDoc(collection(db, collectionName), docData);
+                        heroImages.unshift(`url(${uploadedImageUrl})`);
+                        initializeHeroSlideshow();
+                    }
+                    
+                    uploadForm.reset();
+                    uploadModal.classList.remove('visible');
+                    alert('Image uploaded successfully!');
+
+                } catch (error) {
+                    console.error("Error uploading image: ", error);
+                    alert('Failed to upload image. Please check console for details.');
+                } finally {
+                    uploadSubmitButton.textContent = 'Upload Picture';
+                    uploadSubmitButton.disabled = false;
+                }
+            });
+
+
+            // --- Delete Mode Logic ---
+            manageImagesBtn.addEventListener('click', () => {
+                if (!auth.currentUser) {
+                    loginModal.classList.add('visible');
+                    loginError.textContent = 'Please log in to manage images.';
+                    return;
+                }
+                adminPanelModal.classList.remove('visible');
+                document.body.classList.add('delete-mode');
+                finishManagingBtn.classList.remove('hidden');
+                addDeleteIcons();
+            });
+
+            finishManagingBtn.addEventListener('click', () => {
+                document.body.classList.remove('delete-mode');
+                finishManagingBtn.classList.add('hidden');
+                renderGallery();
+                initializeAboutSlideshow();
+            });
+
+            function addDeleteIcons() {
+                // Add delete icons to gallery items
+                document.querySelectorAll('#gallery-grid .gallery-item').forEach(item => {
+                    if (!item.querySelector('.delete-icon')) {
+                        const deleteBtn = document.createElement('span');
+                        deleteBtn.className = 'delete-icon';
+                        deleteBtn.innerHTML = '<i class="fas fa-trash"></i>';
+                        deleteBtn.onclick = (e) => {
+                            e.stopPropagation();
+                            const docIdToDelete = item.dataset.docId;
+                            showCustomConfirm('Are you sure you want to delete this image?', async () => {
+                                if (docIdToDelete && docIdToDelete.startsWith('default')) {
+                                    item.remove();
+                                    alert("This is a default image and not in Firestore.");
+                                    return;
+                                }
+                                try {
+                                    await deleteDoc(doc(db, "galleryImages", docIdToDelete));
+                                    galleryImagesData = galleryImagesData.filter(img => img.docId !== docIdToDelete);
+                                    renderGallery();
+                                    alert("Image removed successfully.");
+                                } catch (error) {
+                                    console.error("Error removing document from Firestore:", error);
+                                    alert("Error removing image.");
+                                }
+                            });
+                        };
+                        item.querySelector('.gallery-card').appendChild(deleteBtn);
+                    }
+                });
+                
+                // Add delete icons to about slideshow images
+                document.querySelectorAll('#about-slideshow-container .about-slide-wrapper').forEach((wrapper) => {
+                    if (!wrapper.querySelector('.delete-icon')) {
+                        const deleteBtn = document.createElement('span');
+                        deleteBtn.className = 'delete-icon';
+                        deleteBtn.innerHTML = '<i class="fas fa-trash"></i>';
+                        deleteBtn.onclick = (e) => {
+                            e.stopPropagation();
+                            const docIdToDelete = wrapper.dataset.docId;
+                            showCustomConfirm('Are you sure you want to delete this image?', async () => {
+                                if (docIdToDelete && docIdToDelete.startsWith('default')) {
+                                    aboutImagesData = aboutImagesData.filter(img => img.docId !== docIdToDelete);
+                                    initializeAboutSlideshow();
+                                    alert("This is a default image and not in Firestore.");
+                                    return;
+                                }
+                                try {
+                                    await deleteDoc(doc(db, "aboutImages", docIdToDelete));
+                                    aboutImagesData = aboutImagesData.filter(img => img.docId !== docIdToDelete);
+                                    initializeAboutSlideshow();
+                                    alert("Image removed successfully.");
+                                } catch (error) {
+                                    console.error("Error deleting about slideshow image:", error);
+                                    alert("Error removing image.");
+                                }
+                            });
+                        };
+                        wrapper.appendChild(deleteBtn);
+                    }
+                });
+            }
+
+            // --- Custom Confirm Modal ---
+            function showCustomConfirm(message, onConfirm) {
+                const existingModal = document.getElementById('custom-confirm-modal');
+                if (existingModal) existingModal.remove();
+
+                const modalHtml = `
+                    <div id="custom-confirm-modal" class="modal-overlay visible">
+                        <div class="modal-content text-center">
+                            <h3 class="text-2xl font-playfair text-gold-gradient mb-4">Confirm Action</h3>
+                            <p class="text-text-light mb-6">${message}</p>
+                            <div class="flex justify-center gap-4">
+                                <button id="confirm-yes-btn" class="btn-primary">Yes</button>
+                                <button id="confirm-no-btn" class="btn-secondary">No</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                document.body.insertAdjacentHTML('beforeend', modalHtml);
+
+                const modal = document.getElementById('custom-confirm-modal');
+                document.getElementById('confirm-yes-btn').onclick = () => {
+                    onConfirm();
+                    modal.remove();
+                };
+                document.getElementById('confirm-no-btn').onclick = () => {
+                    modal.remove();
+                };
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        modal.remove();
+                    }
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
