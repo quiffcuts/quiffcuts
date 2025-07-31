@@ -593,7 +593,7 @@
             overflow: hidden;
         }
         
-        /* Styles for Blog Post Modal */
+        /* === UPDATED STYLES FOR BLOG POST MODAL === */
         #blog-post-modal .modal-content {
             max-width: 800px;
         }
@@ -606,8 +606,24 @@
         }
         #blog-post-modal-content {
             line-height: 1.8;
-            white-space: pre-wrap; /* Preserves whitespace and newlines */
+            white-space: pre-wrap;
+            font-weight: 400; /* Sets normal text to regular weight */
+            color: var(--text-dark); /* Makes normal text slightly dimmer */
         }
+        #blog-post-modal-content a {
+            color: var(--gold);
+            text-decoration: underline;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        #blog-post-modal-content a:hover {
+            color: var(--text-light);
+        }
+        #blog-post-modal-content b {
+            font-weight: 700; /* Makes <b> text bold */
+            color: var(--text-light); /* Makes bold text brighter */
+        }
+
     </style>
 </head>
 <body class="bg-black">
@@ -1520,7 +1536,7 @@
             });
             loadGalleryImages();
 
-            // --- NEW: Blog Section Logic ---
+            // --- Blog Section Logic ---
             const blogPostsGrid = document.getElementById('blog-posts-grid');
             const blogPostModal = document.getElementById('blog-post-modal');
             let blogPostsData = [];
@@ -1547,8 +1563,10 @@
                     postElement.className = 'blog-card';
                     postElement.dataset.docId = postData.docId;
                     
-                    // Create an excerpt
-                    const excerpt = postData.content.split(' ').slice(0, 20).join(' ') + '...';
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = postData.content;
+                    const textOnlyContent = tempDiv.textContent || tempDiv.innerText || "";
+                    const excerpt = textOnlyContent.split(' ').slice(0, 20).join(' ') + '...';
 
                     postElement.innerHTML = `
                         <div class="overflow-hidden"><img src="${postData.imageUrl}" alt="${postData.title}" class="blog-card-img"></div>
@@ -1561,14 +1579,20 @@
                     blogPostsGrid.appendChild(postElement);
                 });
                 
-                // Add event listeners to new "Read More" buttons
-                document.querySelectorAll('.read-more-btn').forEach((button, index) => {
-                    button.addEventListener('click', () => {
-                        const post = blogPostsData[index];
-                        document.getElementById('blog-post-modal-title').textContent = post.title;
-                        document.getElementById('blog-post-modal-image').src = post.imageUrl;
-                        document.getElementById('blog-post-modal-content').textContent = post.content;
-                        blogPostModal.classList.add('visible');
+                document.querySelectorAll('.read-more-btn').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const docId = e.target.closest('.blog-card').dataset.docId;
+                        const post = blogPostsData.find(p => p.docId === docId);
+                        
+                        if(post) {
+                            document.getElementById('blog-post-modal-title').textContent = post.title;
+                            document.getElementById('blog-post-modal-image').src = post.imageUrl;
+                            
+                            // Use .innerHTML to render HTML and .replace() to handle new lines
+                            document.getElementById('blog-post-modal-content').innerHTML = post.content.replace(/\n/g, '<br>');
+                            
+                            blogPostModal.classList.add('visible');
+                        }
                     });
                 });
 
@@ -1580,7 +1604,7 @@
                 if(e.target === blogPostModal) blogPostModal.classList.remove('visible');
             });
             
-            loadBlogPosts(); // Load posts on page start
+            loadBlogPosts();
 
 
             // --- Mobile Menu ---
@@ -1619,8 +1643,7 @@
                 if (e.target === bookingModal) bookingModal.classList.remove('visible');
             });
 
-            // Custom time picker logic remains the same...
-             const hourInput = document.getElementById('booking-hour');
+            const hourInput = document.getElementById('booking-hour');
             const minuteInput = document.getElementById('booking-minute');
             const ampmInput = document.getElementById('booking-ampm');
             const hiddenTimeInput = document.getElementById('booking-time');
@@ -1651,7 +1674,6 @@
             });
             updateHiddenTime();
 
-            // Booking Pass Logic remains same...
             const bookingForm = document.getElementById('booking-form');
             const bookingPassOverlay = document.getElementById('booking-pass-overlay');
             const qrCodeContainer = document.getElementById('pass-qrcode-container');
@@ -1708,7 +1730,6 @@
             const manageImagesBtn = document.getElementById('manage-images-btn');
             const finishManagingBtn = document.getElementById('finish-managing-btn');
             
-            // Auth state change listener
             onAuthStateChanged(auth, (user) => {
                 if (user) {
                     adminLoginBtn.classList.add('hidden');
@@ -1716,7 +1737,6 @@
                 } else {
                     adminLoginBtn.classList.remove('hidden');
                     adminLogoutBtn.classList.add('hidden');
-                    // Hide all admin modals and modes on logout
                     [adminPanelModal, uploadModal, loginModal].forEach(modal => modal.classList.remove('visible'));
                     document.body.classList.remove('delete-mode');
                     finishManagingBtn.classList.add('hidden');
@@ -1748,11 +1768,10 @@
             document.getElementById('upload-new-btn').addEventListener('click', () => {
                 adminPanelModal.classList.remove('visible');
                 uploadForm.reset();
-                uploadDestination.dispatchEvent(new Event('change')); // Trigger change to set correct initial view
+                uploadDestination.dispatchEvent(new Event('change'));
                 uploadModal.classList.add('visible');
             });
 
-            // NEW logic to show/hide admin form fields
             uploadDestination.addEventListener('change', () => {
                 const isBlog = uploadDestination.value === 'blog-post';
                 blogOptionsWrapper.classList.toggle('hidden', !isBlog);
@@ -1763,7 +1782,6 @@
                 document.getElementById('image-category').required = !isBlog;
             });
 
-            // Handle form submission for ALL content types
             uploadForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
                 const uploadSubmitButton = document.getElementById('upload-submit-btn');
@@ -1780,7 +1798,6 @@
                 }
 
                 try {
-                    // Upload to Cloudinary
                     const formData = new FormData();
                     formData.append('file', file);
                     formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
@@ -1801,8 +1818,8 @@
                             timestamp: new Date().toISOString()
                         };
                         await addDoc(collection(db, collectionName), docData);
-                        loadBlogPosts(); // Refresh blog posts
-                    } else { // Handle gallery, hero, about
+                        loadBlogPosts();
+                    } else {
                         if (destination === 'clients-gallery') {
                             collectionName = "galleryImages";
                             docData = { url: data.secure_url, category: document.getElementById('image-category').value, publicId: data.public_id, timestamp: new Date().toISOString() };
@@ -1845,28 +1862,24 @@
             finishManagingBtn.addEventListener('click', () => {
                 document.body.classList.remove('delete-mode');
                 finishManagingBtn.classList.add('hidden');
-                // Re-render sections to remove delete icons
                 renderGallery();
                 initializeAboutSlideshow();
                 renderBlogPosts();
             });
 
             function addDeleteIcons() {
-                // Gallery items
                 document.querySelectorAll('#gallery-grid .gallery-item').forEach(item => {
                     if (item.querySelector('.delete-icon')) return;
                     const deleteBtn = createDeleteButton(() => handleDelete('galleryImages', item.dataset.docId, loadGalleryImages));
                     item.querySelector('.gallery-card').appendChild(deleteBtn);
                 });
                 
-                // About slideshow
                 document.querySelectorAll('#about-slideshow-container .about-slide-wrapper').forEach(wrapper => {
                      if (wrapper.querySelector('.delete-icon')) return;
                     const deleteBtn = createDeleteButton(() => handleDelete('aboutImages', wrapper.dataset.docId, loadAboutImages));
                     wrapper.appendChild(deleteBtn);
                 });
                 
-                // Blog Posts
                 document.querySelectorAll('#blog-posts-grid .blog-card').forEach(card => {
                      if (card.querySelector('.delete-icon')) return;
                     const deleteBtn = createDeleteButton(() => handleDelete('blogPosts', card.dataset.docId, loadBlogPosts));
@@ -1887,21 +1900,20 @@
             }
 
             async function handleDelete(collectionName, docId, refreshFunction) {
-                 if (docId.startsWith('default')) { // Prevent deleting fallback images
+                 if (docId.startsWith('default')) {
                     alert("This is a default item and cannot be deleted.");
                     return;
                 }
                 try {
                     await deleteDoc(doc(db, collectionName, docId));
                     alert("Item removed successfully.");
-                    refreshFunction(); // Refresh the relevant section
+                    refreshFunction();
                 } catch (error) {
                     console.error("Error removing document:", error);
                     alert("Error removing item.");
                 }
             }
 
-            // --- Custom Confirm Modal ---
             function showCustomConfirm(message, onConfirm) {
                 const existingModal = document.getElementById('custom-confirm-modal');
                 if (existingModal) existingModal.remove();
