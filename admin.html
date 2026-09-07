@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Salon Panel — Quiff Cuts</title>
+<meta name="description" content="Private panel for Quiff Cuts staff.">
+<link rel="canonical" href="https://quiffcuts.com/admin">
+<meta name="theme-color" content="#0b0b0c">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Quiff Cuts">
+<meta property="og:title" content="Salon Panel — Quiff Cuts">
+<meta property="og:description" content="Private panel for Quiff Cuts staff.">
+<meta property="og:url" content="https://quiffcuts.com/admin">
+<meta property="og:image" content="https://quiffcuts.com/assets/img/logo.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" type="image/png" href="assets/img/logo-icon.png">
+<link rel="apple-touch-icon" href="assets/img/logo-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Jost:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="css/base.css?v=81dc4fd8">
+<link rel="stylesheet" href="css/pages.css?v=81dc4fd8">
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav__in">
+    <a class="nav__logo" href="/" aria-label="Quiff Cuts — home"><img src="assets/img/logo.png" alt="Quiff Cuts"></a>
+    <nav class="nav__links" id="navLinks">
+      <a href="/" data-en="Home" data-ur="Home">Home</a>
+      <a href="/services" data-en="Services" data-ur="Services">Services</a>
+      <a href="/packages" data-en="Packages" data-ur="Packages">Packages</a>
+      <a href="/gallery" data-en="Gallery" data-ur="Gallery">Gallery</a>
+      <a href="/team" data-en="Team" data-ur="Team">Team</a>
+      <a href="/blog" data-en="Blog" data-ur="Blog">Blog</a>
+      <a href="/contact" data-en="Contact" data-ur="Raabta">Contact</a>
+    </nav>
+    <div class="nav__right">
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="en" aria-pressed="true">EN</button>
+        <button type="button" data-lang="ur" aria-pressed="false">UR</button>
+      </div>
+      <a class="btn btn--gold btn--sm" href="/booking" data-en="Book Now" data-ur="Booking Karein">Book Now</a>
+      <button class="nav__burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navLinks"><i class="fa-solid fa-bars"></i></button>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="page-head">
+  <div class="wrap">
+    <span class="eyebrow">Salon Panel</span>
+    <h1 style="font-size: clamp(1.7rem, 4vw, 2.4rem);">Quiff Cuts — control panel</h1>
+    <p>Bookings, gallery photos and blog posts. Only the owner and manager can sign in.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+
+    <p id="adMsg" style="display:none; font-size: var(--t-sm); margin-bottom: var(--s-5);"></p>
+
+    <!-- ── LOGIN ──────────────────────────────────────────────────────── -->
+    <div id="loginBox" style="max-width: 420px; margin-inline: auto;">
+      <form id="loginForm" class="card">
+        <h2 style="font-size: var(--t-lg); margin-bottom: var(--s-5);">Sign in</h2>
+        <div class="field">
+          <label for="adEmail">Email</label>
+          <input type="email" id="adEmail" autocomplete="username" required placeholder="you@quiffcuts.com">
+        </div>
+        <div class="field">
+          <label for="adPass">Password</label>
+          <input type="password" id="adPass" autocomplete="current-password" required placeholder="••••••••">
+        </div>
+        <button class="btn btn--gold btn--block" type="submit" id="loginGo">Sign in</button>
+      </form>
+      <p class="muted center" style="font-size: var(--t-xs); margin-top: var(--s-4);">
+        This page is private and is not listed on the website or in Google.</p>
+    </div>
+
+    <!-- ── PANEL ──────────────────────────────────────────────────────── -->
+    <div id="panelBox" hidden>
+
+      <div class="row" style="justify-content: space-between; margin-bottom: var(--s-6);">
+        <div class="row" style="gap: var(--s-2);">
+          <button class="slot adtab" type="button" data-tab="bookings" aria-pressed="true">Bookings</button>
+          <button class="slot adtab" type="button" data-tab="gallery"  aria-pressed="false">Photos</button>
+          <button class="slot adtab" type="button" data-tab="blog"     aria-pressed="false">Blog</button>
+        </div>
+        <div class="row" style="gap: var(--s-3);">
+          <span class="muted" style="font-size: var(--t-xs);" id="adWho"></span>
+          <button class="btn btn--ghost btn--sm" type="button" id="adOut">Sign out</button>
+        </div>
+      </div>
+
+      <!-- BOOKINGS -->
+      <div id="tab-bookings">
+        <div class="grid g-4" style="margin-bottom: var(--s-6);">
+          <div class="card stat"><b id="stToday">0</b><span>Booked today</span></div>
+          <div class="card stat"><b id="stWeek">0</b><span>Last 7 days</span></div>
+          <div class="card stat"><b id="stMonth">0</b><span>Last 30 days</span></div>
+          <div class="card stat"><b id="stNew">0</b><span>Still new</span></div>
+        </div>
+
+        <div class="form-note" style="margin-bottom: var(--s-5);">
+          <strong>Most booked this month:</strong> <span id="stTop" class="gold">—</span>
+        </div>
+
+        <div class="row" style="justify-content: space-between; margin-bottom: var(--s-5);">
+          <div class="field" style="margin: 0; min-width: 200px;">
+            <label for="bkFilter">Show</label>
+            <select id="bkFilter">
+              <option value="all">All bookings</option>
+              <option value="new">New only</option>
+              <option value="done">Done</option>
+              <option value="cancelled">Cancelled</option>
+            </select>
+          </div>
+          <button class="btn btn--ghost btn--sm" type="button" id="bkReload">
+            <i class="fa-solid fa-rotate"></i> Refresh</button>
+        </div>
+
+        <div class="stack" id="bkList" style="gap: var(--s-4);">
+          <div class="empty">Loading…</div>
+        </div>
+      </div>
+
+      <!-- PHOTOS -->
+      <div id="tab-gallery" hidden>
+        <div class="card" style="margin-bottom: var(--s-6);">
+          <h2 style="font-size: var(--t-md); margin-bottom: var(--s-5);">Add a photo</h2>
+          <div class="grid g-3">
+            <div class="field">
+              <label for="imgDest">Where</label>
+              <select id="imgDest">
+                <option value="galleryImages">Gallery</option>
+                <option value="heroImages">Home page — big photo</option>
+                <option value="aboutImages">About section</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="imgCat">Category (gallery only)</label>
+              <select id="imgCat">
+                <option value="haircut">Haircut</option>
+                <option value="beard">Beard Style</option>
+                <option value="coloring">Colouring</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="imgFile">Photo</label>
+              <input type="file" id="imgFile" accept="image/*">
+            </div>
+          </div>
+          <button class="btn btn--gold btn--sm" type="button" id="imgGo">
+            <i class="fa-solid fa-upload"></i> Upload</button>
+          <p class="muted" style="font-size: var(--t-xs); margin-top: var(--s-4);">
+            Photos go to Cloudinary (free) and appear on the website within a few seconds.</p>
+        </div>
+
+        <div class="shots" id="imgList"><div class="empty" style="grid-column:1/-1;">Loading…</div></div>
+      </div>
+
+      <!-- BLOG -->
+      <div id="tab-blog" hidden>
+        <div class="card" style="margin-bottom: var(--s-6);">
+          <h2 style="font-size: var(--t-md); margin-bottom: var(--s-5);">Write a post</h2>
+          <div class="field">
+            <label for="pgTitle">Title</label>
+            <input type="text" id="pgTitle" placeholder="e.g. How to keep a fade sharp for three weeks">
+          </div>
+          <div class="field">
+            <label for="pgBody">Text</label>
+            <textarea id="pgBody" rows="8" placeholder="Leave a blank line between paragraphs."></textarea>
+          </div>
+          <button class="btn btn--gold btn--sm" type="button" id="pgGo">
+            <i class="fa-solid fa-paper-plane"></i> Publish</button>
+        </div>
+
+        <div class="stack" id="pgList" style="gap: var(--s-4);">
+          <div class="empty">Loading…</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__grid">
+      <div>
+        <img src="assets/img/logo.png" alt="Quiff Cuts" style="height:46px; margin-bottom: var(--s-4);">
+        <p class="muted" style="font-size: var(--t-sm); max-width: 34ch;"
+           data-en="A premium men's salon in Model City 1, Eden Valley, Faisalabad. Open every day, 10 AM to 2 AM."
+           data-ur="Model City 1, Eden Valley, Faisalabad ka premium men's salon. Roz khula — 10 baje subah se 2 baje raat tak.">
+          A premium men's salon in Model City 1, Eden Valley, Faisalabad. Open every day, 10 AM to 2 AM.</p>
+      </div>
+      <div>
+        <h4 data-en="Explore" data-ur="Safhe">Explore</h4>
+        <div class="foot__links">
+          <a href="/services" data-en="Services" data-ur="Services">Services</a>
+          <a href="/packages" data-en="Packages" data-ur="Packages">Packages</a>
+          <a href="/gallery"  data-en="Gallery"  data-ur="Gallery">Gallery</a>
+          <a href="/team"     data-en="Our Team" data-ur="Hamari Team">Our Team</a>
+          <a href="/blog"     data-en="Blog"     data-ur="Blog">Blog</a>
+        </div>
+      </div>
+      <div>
+        <h4 data-en="Information" data-ur="Maloomat">Information</h4>
+        <div class="foot__links">
+          <a href="/faq"     data-en="FAQ" data-ur="FAQ">FAQ</a>
+          <a href="/payment" data-en="Payment &amp; Pricing" data-ur="Payment aur Qeemat">Payment &amp; Pricing</a>
+          <a href="/refund"  data-en="Refund &amp; Cancellation" data-ur="Refund aur Cancellation">Refund &amp; Cancellation</a>
+          <a href="/terms"   data-en="Terms &amp; Conditions" data-ur="Terms &amp; Conditions">Terms &amp; Conditions</a>
+          <a href="/privacy" data-en="Privacy Policy" data-ur="Privacy Policy">Privacy Policy</a>
+        </div>
+      </div>
+      <div>
+        <h4 data-en="Visit Us" data-ur="Tashreef Laayein">Visit Us</h4>
+        <div class="foot__links">
+          <a href="https://maps.google.com/?q=Quiff+Cuts+61-62+Makkah+Commercial+Market+208+Chak+Road+Eden+Valley+Model+City+1+Faisalabad" target="_blank" rel="noopener">61–62 Makkah Commercial Market<br>208 Chak Road, Eden Valley<br>Model City 1, Faisalabad, PK</a>
+          <a href="tel:+923082270007">+92 308 2270007</a>
+          <a href="mailto:info@quiffcuts.com">info@quiffcuts.com</a>
+          <span class="muted" style="font-size: var(--t-sm);"><span data-en="Daily" data-ur="Rozana">Daily</span> · 10:00 AM – 02:00 AM</span>
+        </div>
+        <div class="foot__social" style="margin-top: var(--s-4);">
+          <a href="https://www.facebook.com/quiffcuts1" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+          <a href="https://www.instagram.com/quiff_cuts" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.tiktok.com/@quiffcuts" target="_blank" rel="noopener" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="https://wa.me/923082270007" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="foot__bottom">
+      <span>© <span data-year>2024–2026</span> Quiff Cuts. <span data-en="All rights reserved." data-ur="Jumla haqooq mehfooz.">All rights reserved.</span></span>
+      <span><span data-en="Powered by" data-ur="Powered by">Powered by</span>
+        <a href="https://tressypos.com/" target="_blank" rel="noopener" title="TressyPOS — Salon POS &amp; Accounting Software">TressyPOS</a></span>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/923082270007" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+
+<script src="js/site.js?v=81dc4fd8"></script>
+<script type="module" src="js/admin.js?v=81dc4fd8"></script>
+</body>
+</html>

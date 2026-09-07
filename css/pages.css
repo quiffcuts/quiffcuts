@@ -1,0 +1,488 @@
+/* ============================================================================
+   QUIFF CUTS — pages.css
+   Safhon ke apne hisse: hero · qeemat ki fehrist · packages · team · gallery
+                          form · legal safhe · FAQ
+   ⚠️ Rang hamesha var(--…) se — base.css me tay hain.
+   ========================================================================= */
+
+/* ── HERO ────────────────────────────────────────────────────────────────── */
+/* ⚠️ COLUMN lazmi hai — warna neeche ki patti (auqaat/pata) flex ka DOOSRA
+      khana ban kar sarnama ke BAGHAL me chali jati hai. */
+.hero {
+    position: relative;
+    min-height: 88vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+    border-bottom: 1px solid var(--line);
+}
+.hero__bg {
+    position: absolute;
+    inset: 0;
+    background: var(--ink);
+    z-index: 0;
+}
+.hero__bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.46;
+    filter: grayscale(0.28) contrast(1.06);
+}
+/* Do parde: neeche se gehra (matn hamesha parha jaye) aur baayen se gehra
+   (jahan sarnama hai). Daayin taraf tasveer saaf nazar aati hai. */
+.hero__bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(180deg, rgba(11,11,12,.45) 0%, rgba(11,11,12,.18) 42%, var(--ink) 100%),
+        linear-gradient(90deg, var(--ink) 4%, rgba(11,11,12,.72) 38%, rgba(11,11,12,.15) 78%, transparent 100%);
+}
+/* Mobile par matn poori chaurai leta hai — is liye parda har taraf se gehra */
+@media (max-width: 860px) {
+    .hero__bg img { opacity: 0.34; }
+    .hero__bg::after {
+        background: linear-gradient(180deg, rgba(11,11,12,.62) 0%, rgba(11,11,12,.45) 40%, var(--ink) 100%);
+    }
+}
+.hero__in {
+    position: relative;
+    z-index: 1;
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    padding-block: var(--s-9);
+}
+.hero__box { max-width: 640px; }
+
+.hero h1 {
+    font-size: clamp(2.6rem, 7.5vw, 5.2rem);
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+    margin-bottom: var(--s-5);
+}
+.hero h1 em {
+    font-style: italic;
+    font-weight: 600;
+    color: var(--gold);
+}
+.hero__lead {
+    font-size: clamp(1rem, 2vw, var(--t-md));
+    color: var(--text-soft);
+    max-width: 56ch;
+    margin-bottom: var(--s-6);
+}
+.hero__cta { display: flex; gap: var(--s-4); flex-wrap: wrap; }
+
+/* neeche ki patti — auqaat aur pata, hamesha nazar me */
+.hero__strip {
+    position: relative;
+    z-index: 1;
+    border-top: 1px solid var(--line);
+    background: rgba(11, 11, 12, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+.hero__strip .wrap {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--s-5);
+    flex-wrap: wrap;
+    padding-block: var(--s-4);
+    font-size: var(--t-sm);
+    color: var(--text-soft);
+}
+.hero__strip b { color: var(--text); font-weight: 500; }
+.hero__strip i { color: var(--gold); font-style: normal; margin-inline-end: var(--s-2); }
+
+/* chhote safhon ka sarnama (services, faq waghera) */
+.page-head {
+    border-bottom: 1px solid var(--line);
+    padding-block: var(--s-8) var(--s-7);
+    background:
+        radial-gradient(120% 90% at 15% 0%, rgba(197,179,88,.08) 0%, transparent 62%),
+        var(--ink);
+}
+.page-head h1 { font-size: clamp(2rem, 5vw, 3.4rem); }
+.page-head p { color: var(--text-soft); max-width: var(--wrap-text); margin-top: var(--s-4); }
+.crumbs { font-size: var(--t-xs); color: var(--text-mute); margin-bottom: var(--s-4); letter-spacing: .05em; }
+.crumbs a:hover { color: var(--gold); }
+
+/* ── QEEMAT KI FEHRIST — purane barbershop ke menu jaisi ─────────────────── */
+.menu { display: grid; gap: var(--s-6); }
+.menu__group h3,
+.menu__group h2 {
+    font-family: var(--body);
+    font-size: var(--t-xs);
+    font-weight: 600;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding-bottom: var(--s-3);
+    border-bottom: 1px solid var(--gold-deep);
+    margin-bottom: var(--s-4);
+}
+.mrow {
+    display: flex;
+    align-items: baseline;
+    gap: var(--s-3);
+    padding-block: var(--s-4);
+    border-bottom: 1px solid var(--line);
+}
+.mrow:last-child { border-bottom: 0; }
+.mrow__name { font-size: var(--t-md); font-weight: 400; color: var(--text); white-space: nowrap; }
+/* nuqton wali lakeer — asal menu ka ehsaas */
+.mrow__dots {
+    flex: 1 1 auto;
+    height: 1px;
+    margin-bottom: 5px;
+    background-image: radial-gradient(circle, var(--line-strong) 1px, transparent 1px);
+    background-size: 6px 1px;
+    background-repeat: repeat-x;
+    min-width: 24px;
+}
+.mrow__price {
+    font-size: var(--t-md);
+    font-weight: 500;
+    color: var(--gold);
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+}
+.mrow__desc {
+    flex-basis: 100%;
+    font-size: var(--t-sm);
+    color: var(--text-mute);
+    margin-top: var(--s-1);
+}
+
+/* ── PACKAGES ────────────────────────────────────────────────────────────── */
+.pkg {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: var(--ink-card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: var(--s-6) var(--s-5) var(--s-5);
+    transition: border-color .35s var(--ease), transform .35s var(--ease);
+}
+.pkg:hover { border-color: var(--gold-deep); transform: translateY(-4px); }
+.pkg--star { border-color: var(--gold); background: linear-gradient(180deg, var(--gold-faint) 0%, var(--ink-card) 30%); }
+.pkg__tag {
+    position: absolute;
+    top: -11px; left: var(--s-5);
+    background: var(--gold);
+    color: var(--ink);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    padding: 3px 12px;
+    border-radius: 999px;
+}
+.pkg h3,
+.pkg h2 { font-size: var(--t-xl); margin-bottom: var(--s-4); font-family: var(--display); }
+.pkg__items { list-style: none; padding: 0; margin: 0 0 var(--s-5); display: grid; gap: var(--s-3); }
+.pkg__items li {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--s-3);
+    font-size: var(--t-sm);
+    color: var(--text-soft);
+}
+.pkg__items li::before { content: '—'; color: var(--gold-deep); flex: none; }
+.pkg__price { margin-top: auto; padding-top: var(--s-4); border-top: 1px solid var(--line); }
+.pkg__was { font-size: var(--t-sm); color: var(--text-mute); text-decoration: line-through; }
+.pkg__now { font-family: var(--display); font-size: var(--t-2xl); color: var(--gold); font-variant-numeric: tabular-nums; }
+.pkg__save {
+    display: inline-block;
+    margin-top: var(--s-2);
+    font-size: var(--t-xs);
+    letter-spacing: .08em;
+    color: var(--ok);
+}
+
+/* ── TEAM ────────────────────────────────────────────────────────────────── */
+.person { text-align: center; }
+.person__pic {
+    width: 168px; height: 168px;
+    margin: 0 auto var(--s-4);
+    border-radius: 50%;
+    padding: 4px;
+    border: 1px solid var(--gold-deep);
+    transition: border-color .35s var(--ease);
+}
+.person__pic img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+.person:hover .person__pic { border-color: var(--gold); }
+/* jis ki tasveer na ho — us ke naam ka pehla harf */
+.person__pic--initial {
+    display: flex; align-items: center; justify-content: center;
+    background: var(--ink-card);
+    font-family: var(--display);
+    font-size: var(--t-3xl);
+    color: var(--gold-deep);
+}
+.person h3,
+.person h2 { font-size: var(--t-lg); font-family: var(--display); }
+.person span {
+    display: block;
+    margin-top: var(--s-2);
+    font-size: var(--t-xs);
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+}
+
+/* ── GALLERY ─────────────────────────────────────────────────────────────── */
+.shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-4); }
+.shot {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--line);
+    background: var(--ink-card);
+    cursor: zoom-in;
+}
+.shot img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s var(--ease); }
+.shot:hover img { transform: scale(1.06); }
+
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(6, 6, 7, 0.94);
+    padding: var(--s-5);
+}
+.lightbox.is-open { display: flex; }
+.lightbox img { max-width: min(92vw, 1000px); max-height: 88vh; border-radius: var(--radius-lg); }
+.lightbox__x {
+    position: absolute; top: var(--s-5); right: var(--s-5);
+    background: none; border: 1px solid var(--line-strong);
+    color: var(--text); width: 44px; height: 44px;
+    border-radius: 50%; cursor: pointer; font-size: 1.2rem;
+}
+.lightbox__x:hover { border-color: var(--gold); color: var(--gold); }
+
+/* ── FORM ────────────────────────────────────────────────────────────────── */
+.field { display: flex; flex-direction: column; gap: var(--s-2); margin-bottom: var(--s-5); }
+.field label {
+    font-size: var(--t-xs);
+    font-weight: 500;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+}
+.field label .req { color: var(--gold); }
+.field input, .field select, .field textarea {
+    background: var(--ink-raised);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius);
+    padding: 0.85rem 1rem;
+    color: var(--text);
+    font-size: var(--t-base);
+    font-weight: 300;
+    transition: border-color .3s var(--ease), background .3s var(--ease);
+    width: 100%;
+}
+.field input:focus, .field select:focus, .field textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+    background: var(--ink-card);
+}
+.field input::placeholder, .field textarea::placeholder { color: var(--text-mute); }
+.field select { appearance: none; cursor: pointer; padding-inline-end: 2.4rem;
+    background-image: linear-gradient(45deg, transparent 50%, var(--gold) 50%),
+                      linear-gradient(135deg, var(--gold) 50%, transparent 50%);
+    background-position: calc(100% - 20px) 55%, calc(100% - 14px) 55%;
+    background-size: 6px 6px, 6px 6px;
+    background-repeat: no-repeat;
+}
+.field small { font-size: var(--t-xs); color: var(--text-mute); }
+.field--bad input, .field--bad select { border-color: var(--bad); }
+.field__err { font-size: var(--t-xs); color: var(--bad); display: none; }
+.field--bad .field__err { display: block; }
+
+.form-note {
+    border: 1px solid var(--line);
+    border-inline-start: 2px solid var(--gold);
+    background: var(--ink-raised);
+    padding: var(--s-4);
+    font-size: var(--t-sm);
+    color: var(--text-soft);
+    border-radius: var(--radius);
+}
+
+/* waqt ke khane */
+.slots { display: flex; flex-wrap: wrap; gap: var(--s-2); }
+.slot {
+    background: var(--ink-raised);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius);
+    padding: 0.55rem 0.9rem;
+    font-size: var(--t-sm);
+    cursor: pointer;
+    transition: all .25s var(--ease);
+    font-variant-numeric: tabular-nums;
+}
+.slot:hover { border-color: var(--gold-deep); color: var(--gold); }
+.slot[aria-pressed="true"] { background: var(--gold); border-color: var(--gold); color: var(--ink); font-weight: 500; }
+
+/* ── BOOKING PASS (tasdeeq ka card) ──────────────────────────────────────── */
+.pass {
+    background: linear-gradient(160deg, var(--ink-card) 0%, var(--ink-raised) 100%);
+    border: 1px solid var(--gold-deep);
+    border-radius: var(--radius-lg);
+    padding: var(--s-6);
+    max-width: 420px;
+    margin-inline: auto;
+    text-align: center;
+}
+.pass__logo { height: 44px; margin: 0 auto var(--s-4); }
+.pass__id {
+    font-family: var(--display);
+    font-size: var(--t-xl);
+    color: var(--gold);
+    letter-spacing: .06em;
+}
+.pass__rows { text-align: start; margin: var(--s-5) 0; display: grid; gap: var(--s-3); }
+.pass__rows div { display: flex; justify-content: space-between; gap: var(--s-4); font-size: var(--t-sm); border-bottom: 1px dashed var(--line); padding-bottom: var(--s-3); }
+.pass__rows span:first-child { color: var(--text-mute); letter-spacing: .08em; text-transform: uppercase; font-size: var(--t-xs); }
+.pass__rows span:last-child { color: var(--text); font-weight: 500; text-align: end; }
+.pass__qr { display: flex; justify-content: center; padding: var(--s-4); background: #fff; border-radius: var(--radius); width: fit-content; margin-inline: auto; }
+
+/* ── LEGAL / PROSE ───────────────────────────────────────────────────────── */
+.prose { max-width: var(--wrap-text); }
+.prose h2 {
+    font-size: var(--t-xl);
+    margin-top: var(--s-7);
+    padding-top: var(--s-5);
+    border-top: 1px solid var(--line);
+}
+.prose h2:first-child { margin-top: 0; border-top: 0; padding-top: 0; }
+.prose h3 { font-size: var(--t-md); margin-top: var(--s-5); color: var(--gold); font-family: var(--body); font-weight: 600; letter-spacing: .02em; }
+.prose p, .prose li { color: var(--text-soft); }
+.prose ul, .prose ol { padding-inline-start: var(--s-5); display: grid; gap: var(--s-3); margin-block: var(--s-4); }
+.prose li::marker { color: var(--gold-deep); }
+.prose strong { color: var(--text); font-weight: 500; }
+.prose table { width: 100%; border-collapse: collapse; margin-block: var(--s-5); font-size: var(--t-sm); }
+.prose th, .prose td { text-align: start; padding: var(--s-3) var(--s-4); border-bottom: 1px solid var(--line); }
+.prose th { color: var(--gold); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; font-size: var(--t-xs); }
+.prose td:last-child { text-align: end; font-variant-numeric: tabular-nums; }
+.updated { font-size: var(--t-xs); color: var(--text-mute); letter-spacing: .06em; margin-bottom: var(--s-6); }
+
+/* ── FAQ ─────────────────────────────────────────────────────────────────── */
+.faq { display: grid; gap: var(--s-3); max-width: var(--wrap-text); }
+.faq details {
+    background: var(--ink-card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    transition: border-color .3s var(--ease);
+}
+.faq details[open] { border-color: var(--gold-deep); }
+.faq summary {
+    cursor: pointer;
+    list-style: none;
+    padding: var(--s-4) var(--s-5);
+    font-size: var(--t-md);
+    font-weight: 400;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--s-4);
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: '+'; color: var(--gold); font-size: var(--t-lg); flex: none; transition: transform .3s var(--ease); }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq .faq__a { padding: 0 var(--s-5) var(--s-5); color: var(--text-soft); font-size: var(--t-sm); }
+
+/* ── CHHOTE HISSE ────────────────────────────────────────────────────────── */
+.stat { text-align: center; }
+.stat b { display: block; font-family: var(--display); font-size: var(--t-3xl); color: var(--gold); line-height: 1; }
+.stat span { font-size: var(--t-xs); letter-spacing: .18em; text-transform: uppercase; color: var(--text-mute); }
+
+.quote {
+    background: var(--ink-card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: var(--s-5);
+}
+.quote__stars { color: var(--gold); font-size: var(--t-sm); letter-spacing: .18em; margin-bottom: var(--s-3); }
+.quote p { font-size: var(--t-sm); color: var(--text-soft); font-style: italic; }
+.quote cite { display: block; margin-top: var(--s-4); font-style: normal; font-size: var(--t-xs); letter-spacing: .12em; text-transform: uppercase; color: var(--gold-deep); }
+
+.cta-band {
+    background:
+        radial-gradient(90% 140% at 50% 0%, rgba(197,179,88,.13) 0%, transparent 65%),
+        var(--ink-raised);
+    border-block: 1px solid var(--line);
+    padding-block: var(--s-8);
+    text-align: center;
+}
+.cta-band h2 { font-size: clamp(1.7rem, 4vw, var(--t-2xl)); margin-bottom: var(--s-4); }
+.cta-band p { color: var(--text-soft); max-width: 52ch; margin-inline: auto; margin-bottom: var(--s-5); }
+
+/* WhatsApp ka tairta hua nishan */
+.wa-float {
+    position: fixed;
+    right: 18px; bottom: 18px;
+    z-index: 800;
+    width: 54px; height: 54px;
+    border-radius: 50%;
+    background: #1faa54;
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: 0 8px 24px rgba(0,0,0,.45);
+    transition: transform .3s var(--ease), background .3s var(--ease);
+}
+.wa-float:hover { background: #24c463; transform: scale(1.07); }
+
+/* khali / load ho raha hai */
+.empty { text-align: center; padding: var(--s-8) var(--s-4); color: var(--text-mute); font-size: var(--t-sm); }
+
+/* ── DO KHANE (form + patti) ─────────────────────────────────────────────── */
+/* ⚠️ Ye class is liye bani ke inline `grid-template-columns` mobile par TOOT
+      jata hai — media query us par lagti hi nahi (inline style hamesha jeet
+      jata hai). Is liye do-khane wala har layout class se hi banega. */
+.split {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: var(--s-8);
+    align-items: start;
+}
+
+/* Sath wali patti — bari screen par baayin lakeer, chhoti par upar ki lakeer */
+.aside-rule {
+    border-inline-start: 1px solid var(--line);
+    padding-inline-start: var(--s-6);
+}
+
+/* ── CHHOTI SCREEN ───────────────────────────────────────────────────────── */
+@media (max-width: 860px) {
+    .shots { grid-template-columns: repeat(2, 1fr); }
+    .hero { min-height: 78vh; }
+    .split { grid-template-columns: 1fr; gap: var(--s-6); }
+    .aside-rule {
+        border-inline-start: 0;
+        border-top: 1px solid var(--line);
+        padding-inline-start: 0;
+        padding-top: var(--s-5);
+        margin-top: var(--s-2);
+    }
+}
+@media (max-width: 620px) {
+    .shots { grid-template-columns: 1fr 1fr; gap: var(--s-3); }
+    .hero__cta .btn { flex: 1 1 100%; }
+    .person__pic { width: 132px; height: 132px; }
+    .mrow { flex-wrap: wrap; }
+}
+
+/* Groom's Special ki lambi fehrist — bari screen par do khane, mobile par ek */
+.pkg__items--2col { display: grid; grid-template-columns: 1fr 1fr; }
+@media (max-width: 620px) { .pkg__items--2col { grid-template-columns: 1fr; } }

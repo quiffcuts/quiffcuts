@@ -1,0 +1,415 @@
+/* ============================================================================
+   QUIFF CUTS — base.css
+   Buniyadi nizam: rang · type · layout · sanjhe hisse (nav, footer, button)
+   ----------------------------------------------------------------------------
+   ⚠️ QAIDA: koi bhi rang seedha na likhein — hamesha var(--…) se.
+             Warna ek jagah rang badalne par baqi safhe peeche reh jate hain.
+   ========================================================================= */
+
+/* ── 1. TOKENS ───────────────────────────────────────────────────────────── */
+:root {
+    /* Ground — khalis kaala nahi; halka sa thanda cast, taake gold garam lage */
+    --ink:            #0b0b0c;
+    --ink-raised:     #121214;
+    --ink-card:       #17171a;
+    --ink-hover:      #1e1e22;
+
+    /* Gold — teen darje. Poora gold sirf THORI jagah par (warna sasta lagta hai) */
+    --gold:           #c5b358;   /* asal brand */
+    --gold-bright:    #e0d18a;   /* sirf hover / chhote nishan */
+    --gold-deep:      #8a7a34;   /* lakeerein, border */
+    --gold-faint:     rgba(197, 179, 88, 0.14);
+
+    /* Matn — garam off-white (khalis safed screen par sakht lagta hai) */
+    --text:           #edeae3;
+    --text-soft:      #b3aea3;
+    --text-mute:      #7e7a72;
+
+    /* Lakeerein */
+    --line:           rgba(237, 234, 227, 0.10);
+    --line-strong:    rgba(237, 234, 227, 0.18);
+
+    /* Halat ke rang */
+    --ok:             #4caf7d;
+    --warn:           #d9a441;
+    --bad:            #cf5c5c;
+
+    /* Type */
+    --display: 'Playfair Display', 'Georgia', 'Times New Roman', serif;
+    --body:    'Jost', 'Poppins', -apple-system, 'Segoe UI', sans-serif;
+
+    /* Type scale — 1.25 (major third), 16px buniyad */
+    --t-xs:   0.75rem;
+    --t-sm:   0.875rem;
+    --t-base: 1rem;
+    --t-md:   1.125rem;
+    --t-lg:   1.375rem;
+    --t-xl:   1.75rem;
+    --t-2xl:  2.25rem;
+    --t-3xl:  3rem;
+    --t-4xl:  4rem;
+
+    /* Faasle */
+    --s-1: 0.25rem;  --s-2: 0.5rem;   --s-3: 0.75rem;  --s-4: 1rem;
+    --s-5: 1.5rem;   --s-6: 2rem;     --s-7: 3rem;     --s-8: 4rem;
+    --s-9: 6rem;     --s-10: 8rem;
+
+    --wrap:      1200px;
+    --wrap-text: 68ch;     /* parhne wali chaurai — 65-70 harf */
+    --radius:    2px;      /* premium = tez kone, gol nahi */
+    --radius-lg: 4px;
+
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Ye site JAAN BOOJH KAR sirf DARK hai — barbershop ki apni pehchan.
+   Is liye har rang saaf likha hua hai; kisi host ke theme par bharosa nahi. */
+
+/* ── 2. RESET ────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    background: var(--ink);
+    color: var(--text);
+    font-family: var(--body);
+    font-size: var(--t-base);
+    font-weight: 300;
+    line-height: 1.7;
+    letter-spacing: 0.01em;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+img, svg, video { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration: none; }
+button, input, select, textarea { font: inherit; color: inherit; }
+
+h1, h2, h3, h4 {
+    font-family: var(--display);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+    margin: 0;
+}
+
+p { margin: 0 0 var(--s-4); }
+p:last-child { margin-bottom: 0; }
+
+:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+    border-radius: var(--radius);
+}
+
+::selection { background: var(--gold); color: var(--ink); }
+
+/* ── 3. LAYOUT ───────────────────────────────────────────────────────────── */
+.wrap {
+    width: 100%;
+    max-width: var(--wrap);
+    margin-inline: auto;
+    padding-inline: var(--s-5);
+}
+
+.section { padding-block: var(--s-9); }
+.section--tight { padding-block: var(--s-8); }
+
+.grid { display: grid; gap: var(--s-5); }
+.g-2 { grid-template-columns: repeat(2, 1fr); }
+.g-3 { grid-template-columns: repeat(3, 1fr); }
+.g-4 { grid-template-columns: repeat(4, 1fr); }
+
+.stack { display: flex; flex-direction: column; gap: var(--s-4); }
+.row   { display: flex; align-items: center; gap: var(--s-3); flex-wrap: wrap; }
+
+/* ── 4. SECTION SARNAMA ──────────────────────────────────────────────────── */
+/* Eyebrow — chhota, wide tracking. Ye is site ka apna structural device hai:
+   har section ka apna naam, gold ki ek chhoti lakeer ke sath. */
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--s-3);
+    font-size: var(--t-xs);
+    font-weight: 500;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: var(--s-4);
+}
+.eyebrow::before {
+    content: '';
+    width: 34px;
+    height: 1px;
+    background: var(--gold-deep);
+}
+
+.sec-head { max-width: var(--wrap-text); margin-bottom: var(--s-7); }
+.sec-head h2 { font-size: clamp(1.9rem, 4.2vw, var(--t-3xl)); }
+.sec-head p  { color: var(--text-soft); margin-top: var(--s-4); font-size: var(--t-md); }
+.sec-head--mid { margin-inline: auto; text-align: center; }
+.sec-head--mid .eyebrow::after {
+    content: '';
+    width: 34px;
+    height: 1px;
+    background: var(--gold-deep);
+}
+
+/* Barber-pole ki diagonal patti — is site ka apna nishan, aam divider nahi */
+.pole-rule {
+    height: 3px;
+    border: 0;
+    margin: 0;
+    background: repeating-linear-gradient(
+        -45deg,
+        var(--gold) 0 6px,
+        transparent 6px 12px
+    );
+    opacity: 0.5;
+}
+
+/* ── 5. BUTTON ───────────────────────────────────────────────────────────── */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--s-3);
+    padding: 0.9rem 1.9rem;
+    border: 1px solid transparent;
+    border-radius: var(--radius);
+    font-size: var(--t-sm);
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background .35s var(--ease), color .35s var(--ease),
+                border-color .35s var(--ease), transform .35s var(--ease);
+}
+.btn:active { transform: translateY(1px); }
+
+.btn--gold {
+    background: var(--gold);
+    color: var(--ink);
+    font-weight: 600;
+}
+.btn--gold:hover { background: var(--gold-bright); }
+
+.btn--ghost {
+    border-color: var(--line-strong);
+    color: var(--text);
+    background: transparent;
+}
+.btn--ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+.btn--wa { background: #1faa54; color: #fff; font-weight: 600; }
+.btn--wa:hover { background: #24c463; }
+
+.btn--sm { padding: 0.6rem 1.15rem; font-size: var(--t-xs); }
+.btn--block { width: 100%; }
+
+/* ── 6. CARD ─────────────────────────────────────────────────────────────── */
+.card {
+    background: var(--ink-card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: var(--s-5);
+    transition: border-color .35s var(--ease), background .35s var(--ease),
+                transform .35s var(--ease);
+}
+.card:hover {
+    border-color: var(--gold-deep);
+    background: var(--ink-hover);
+    transform: translateY(-3px);
+}
+
+/* ── 7. NAV ──────────────────────────────────────────────────────────────── */
+.nav {
+    position: sticky;
+    top: 0;
+    z-index: 900;
+    background: rgba(11, 11, 12, 0.82);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+    transition: background .3s var(--ease), border-color .3s var(--ease);
+}
+.nav.is-scrolled { background: rgba(11, 11, 12, 0.97); border-color: var(--line-strong); }
+
+.nav__in {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--s-5);
+    height: 76px;
+}
+.nav__logo { display: flex; align-items: center; gap: var(--s-3); }
+.nav__logo img { height: 40px; width: auto; }
+
+.nav__links { display: flex; align-items: center; gap: var(--s-5); }
+.nav__links a {
+    position: relative;
+    font-size: var(--t-sm);
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    color: var(--text-soft);
+    padding-block: var(--s-2);
+    transition: color .3s var(--ease);
+}
+.nav__links a:hover { color: var(--text); }
+.nav__links a::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: 0;
+    width: 0; height: 1px;
+    background: var(--gold);
+    transition: width .35s var(--ease);
+}
+.nav__links a:hover::after,
+.nav__links a[aria-current="page"]::after { width: 100%; }
+.nav__links a[aria-current="page"] { color: var(--gold); }
+
+.nav__right { display: flex; align-items: center; gap: var(--s-4); }
+
+/* zubaan ka switch */
+.lang {
+    display: inline-flex;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+.lang button {
+    background: none;
+    border: 0;
+    padding: 0.35rem 0.7rem;
+    font-size: var(--t-xs);
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: var(--text-mute);
+    cursor: pointer;
+    transition: background .25s var(--ease), color .25s var(--ease);
+}
+.lang button[aria-pressed="true"] { background: var(--gold); color: var(--ink); }
+
+.nav__burger {
+    display: none;
+    background: none;
+    border: 0;
+    padding: var(--s-2);
+    cursor: pointer;
+    color: var(--text);
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+/* ── 8. FOOTER ───────────────────────────────────────────────────────────── */
+.foot {
+    background: var(--ink-raised);
+    border-top: 1px solid var(--line);
+    padding-block: var(--s-8) var(--s-5);
+    margin-top: var(--s-9);
+}
+.foot__grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr 1.3fr;
+    gap: var(--s-6);
+}
+.foot h4 {
+    font-family: var(--body);
+    font-size: var(--t-xs);
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: var(--s-4);
+}
+.foot a { color: var(--text-soft); font-size: var(--t-sm); transition: color .25s var(--ease); }
+.foot a:hover { color: var(--gold); }
+.foot__links { display: flex; flex-direction: column; gap: var(--s-3); }
+.foot__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--s-4);
+    flex-wrap: wrap;
+    border-top: 1px solid var(--line);
+    margin-top: var(--s-7);
+    padding-top: var(--s-5);
+    font-size: var(--t-xs);
+    color: var(--text-mute);
+}
+.foot__social { display: flex; gap: var(--s-4); font-size: var(--t-md); }
+
+/* ── 9. HARKAT (reveal) ──────────────────────────────────────────────────── */
+.reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity .75s var(--ease), transform .75s var(--ease);
+}
+.reveal.is-in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+    }
+}
+
+/* ── 10. MADADGAR ────────────────────────────────────────────────────────── */
+.muted   { color: var(--text-soft); }
+.gold    { color: var(--gold); }
+.center  { text-align: center; }
+.nums    { font-variant-numeric: tabular-nums; }
+.sr-only {
+    position: absolute; width: 1px; height: 1px;
+    padding: 0; margin: -1px; overflow: hidden;
+    clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+.scroll-x { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+/* zubaan: ek waqt me sirf EK nazar aati hai (site.js <html data-lang> lagata hai) */
+[data-lang="en"] [data-ur]:not([data-en]),
+[data-lang="en"] .ur-only { display: none; }
+[data-lang="ur"] .en-only { display: none; }
+
+/* ── 11. CHHOTI SCREEN ───────────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+    .g-4 { grid-template-columns: repeat(2, 1fr); }
+    .foot__grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 860px) {
+    .nav__burger { display: block; }
+    .nav__links {
+        position: fixed;
+        inset: 76px 0 auto 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        background: var(--ink-raised);
+        border-bottom: 1px solid var(--line-strong);
+        padding: var(--s-4) var(--s-5) var(--s-6);
+        transform: translateY(-120%);
+        transition: transform .4s var(--ease);
+        max-height: calc(100vh - 76px);
+        overflow-y: auto;
+    }
+    .nav__links.is-open { transform: none; }
+    .nav__links a { padding-block: var(--s-4); border-bottom: 1px solid var(--line); }
+    .nav__links a::after { display: none; }
+    .section { padding-block: var(--s-8); }
+}
+
+@media (max-width: 620px) {
+    .g-2, .g-3, .g-4 { grid-template-columns: 1fr; }
+    .foot__grid { grid-template-columns: 1fr; gap: var(--s-5); }
+    .wrap { padding-inline: var(--s-4); }
+    :root { --t-3xl: 2.25rem; --t-4xl: 2.75rem; }
+}

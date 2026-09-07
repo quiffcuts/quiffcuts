@@ -1,0 +1,56 @@
+# ═══════════════════════════════════════════════════════════════════════════
+#  QUIFF CUTS — server ki hidayat  (Netlify aur Cloudflare Pages dono samajhte hain)
+# ═══════════════════════════════════════════════════════════════════════════
+
+# ── 1. Banane wali files kabhi Google me na jayein ─────────────────────────
+# (Ye deploy me hoti hi nahi — magar galti se chali jayen to bhi mehfooz.)
+/_pages/*
+  X-Robots-Tag: noindex, nofollow
+
+/_ORIGINAL-live-2026-09-07.html
+  X-Robots-Tag: noindex, nofollow
+
+# Salon ka apna panel
+/admin.html
+  X-Robots-Tag: noindex, nofollow
+
+/admin
+  X-Robots-Tag: noindex, nofollow
+
+# ── 2. CACHE KA POORA NIZAM ────────────────────────────────────────────────
+# 🔴 Ye tarteeb bohat ahem hai. 07-Sep-2026 ko yahi ghalti hui thi:
+#    css/js ko 7 din ka cache dia magar pate par koi nishan nahi tha — is liye
+#    ek theek ki hui kharabi customer tak pohanchti hi nahi thi.
+#
+#    Ab har css/js ke pate par build ka nishan lagta hai (?v=xxxxxxxx).
+#    File badle → nishan badle → pata badle → browser NAYI file leta hai.
+#    Is liye in par ek SAAL ka cache bilkul mehfooz hai.
+
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/css/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/js/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# ⚠️ HTML par cache HARGIZ nahi — yehi safha nishan wale naye pate laata hai.
+#    Isay cache kar dein to purane pate hi chalte rahenge aur poora nizam bekar.
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/
+  Cache-Control: public, max-age=0, must-revalidate
+
+/sitemap.xml
+  Cache-Control: public, max-age=3600
+
+/robots.txt
+  Cache-Control: public, max-age=3600
+
+# ── 3. Aam hifazat ─────────────────────────────────────────────────────────
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: SAMEORIGIN

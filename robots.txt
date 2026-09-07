@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Salon ka apna panel — Google me kabhi nahi
+Disallow: /admin.html
+Disallow: /admin
+
+# Sirf banane wali files — inhen kabhi index na kiya jaye
+Disallow: /_pages/
+Disallow: /_ORIGINAL-live-2026-09-07.html
+
+Sitemap: https://quiffcuts.com/sitemap.xml

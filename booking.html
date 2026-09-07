@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Book an Appointment — Quiff Cuts Faisalabad</title>
+<meta name="description" content="Book your haircut, beard trim, facial or groom package at Quiff Cuts, Faisalabad. Choose your date and time — confirmed on WhatsApp in minutes.">
+<link rel="canonical" href="https://quiffcuts.com/booking">
+<meta name="theme-color" content="#0b0b0c">
+<meta property="og:title" content="Book an Appointment — Quiff Cuts">
+<meta property="og:description" content="Book your haircut, beard trim, facial or groom package at Quiff Cuts, Faisalabad. Choose your date and time — confirmed on WhatsApp in minutes.">
+<meta property="og:url" content="https://quiffcuts.com/booking">
+<meta property="og:image" content="https://quiffcuts.com/assets/img/logo.png">
+
+<link rel="icon" type="image/png" href="assets/img/logo-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Jost:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="css/base.css?v=81dc4fd8">
+<link rel="stylesheet" href="css/pages.css?v=81dc4fd8">
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav__in">
+    <a class="nav__logo" href="/" aria-label="Quiff Cuts — home"><img src="assets/img/logo.png" alt="Quiff Cuts"></a>
+    <nav class="nav__links" id="navLinks">
+      <a href="/"    data-en="Home"     data-ur="Home">Home</a>
+      <a href="/services" data-en="Services" data-ur="Services">Services</a>
+      <a href="/packages" data-en="Packages" data-ur="Packages">Packages</a>
+      <a href="/gallery"  data-en="Gallery"  data-ur="Gallery">Gallery</a>
+      <a href="/team"     data-en="Team"     data-ur="Team">Team</a>
+      <a href="/blog"     data-en="Blog"     data-ur="Blog">Blog</a>
+      <a href="/contact"  data-en="Contact"  data-ur="Raabta">Contact</a>
+    </nav>
+    <div class="nav__right">
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="en" aria-pressed="true">EN</button>
+        <button type="button" data-lang="ur" aria-pressed="false">UR</button>
+      </div>
+      <a class="btn btn--gold btn--sm" href="/booking" data-en="Book Now" data-ur="Booking Karein">Book Now</a>
+      <button class="nav__burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navLinks"><i class="fa-solid fa-bars"></i></button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section class="page-head">
+  <div class="wrap">
+    <div class="crumbs"><a href="/">Home</a> / <span data-en="Booking" data-ur="Booking">Booking</span></div>
+    <span class="eyebrow" data-en="Reserve Your Chair" data-ur="Apni Kursi Mehfooz Karein">Reserve Your Chair</span>
+    <h1 data-en="Book an appointment" data-ur="Appointment lein">Book an appointment</h1>
+    <p data-en="Fill in four details and pick a time. Your booking is saved with us straight away, and WhatsApp opens so you can confirm it in one tap."
+       data-ur="Chaar cheezein bharein aur waqt chunein. Booking foran hamare paas mehfooz ho jati hai, aur WhatsApp khul jata hai taake ek tap me tasdeeq ho jaye.">
+      Fill in four details and pick a time.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="split">
+
+      <!-- ── FORM ────────────────────────────────────────────────────── -->
+      <form id="bookForm" novalidate>
+        <div class="field">
+          <label for="bkName"><span data-en="Your name" data-ur="Aap ka naam">Your name</span> <span class="req">*</span></label>
+          <input type="text" id="bkName" autocomplete="name" required
+                 data-en-ph="e.g. Ahmed Raza" data-ur-ph="misal: Ahmed Raza" placeholder="e.g. Ahmed Raza">
+          <span class="field__err" data-en="Please enter your name." data-ur="Apna naam likhein.">Please enter your name.</span>
+        </div>
+
+        <div class="field">
+          <label for="bkPhone"><span data-en="Mobile number" data-ur="Mobile number">Mobile number</span> <span class="req">*</span></label>
+          <input type="tel" id="bkPhone" autocomplete="tel" required
+                 data-en-ph="03XX XXXXXXX" data-ur-ph="03XX XXXXXXX" placeholder="03XX XXXXXXX">
+          <small data-en="We only use this to confirm your appointment."
+                 data-ur="Ye sirf appointment ki tasdeeq ke liye istemal hota hai.">We only use this to confirm your appointment.</small>
+          <span class="field__err" data-en="Please enter a valid number." data-ur="Durust number likhein.">Please enter a valid number.</span>
+        </div>
+
+        <div class="field">
+          <label for="bkService"><span data-en="Service or package" data-ur="Service ya package">Service or package</span> <span class="req">*</span></label>
+          <select id="bkService" required></select>
+        </div>
+
+        <div class="field">
+          <label for="bkDate"><span data-en="Date" data-ur="Tareekh">Date</span> <span class="req">*</span></label>
+          <input type="date" id="bkDate" required>
+        </div>
+
+        <div class="field">
+          <label><span data-en="Time" data-ur="Waqt">Time</span> <span class="req">*</span></label>
+          <div class="slots" id="slots"></div>
+          <input type="hidden" id="bkTime">
+          <small data-en="We are open every day, 10:00 AM to 2:00 AM."
+                 data-ur="Hum roz khule hain — subah 10 baje se raat 2 baje tak.">We are open every day, 10:00 AM to 2:00 AM.</small>
+        </div>
+
+        <div class="field">
+          <label for="bkNote" data-en="Anything we should know? (optional)" data-ur="Koi khaas hidayat? (marzi ki baat)">Anything we should know? (optional)</label>
+          <textarea id="bkNote" rows="3"
+                    data-en-ph="Preferred barber, style reference, allergies…"
+                    data-ur-ph="Pasandeeda barber, style, koi allergy…"
+                    placeholder="Preferred barber, style reference, allergies…"></textarea>
+        </div>
+
+        <p id="bkMsg" style="display:none; font-size: var(--t-sm); margin-bottom: var(--s-4);"></p>
+
+        <button class="btn btn--gold btn--block" type="submit" id="bkSubmit">
+          <i class="fa-regular fa-calendar-check"></i>
+          <span data-en="Confirm Booking" data-ur="Booking Pakki Karein">Confirm Booking</span>
+        </button>
+      </form>
+
+      <!-- ── SATH KI PATTI ───────────────────────────────────────────── -->
+      <aside class="stack">
+        <div class="form-note">
+          <strong style="display:block; margin-bottom: var(--s-2);"
+                  data-en="How it works" data-ur="Ye kaise chalta hai">How it works</strong>
+          <span data-en="Your booking is saved with us the moment you press confirm. WhatsApp then opens with the details already written — just press send. We reply to confirm the slot."
+                data-ur="Confirm dabate hi booking hamare paas mehfooz ho jati hai. Phir WhatsApp khulta hai jis me sab tafseel pehle se likhi hoti hai — bas send dabayein. Hum jawab de kar waqt pakka kar dete hain.">
+            Your booking is saved with us the moment you press confirm.</span>
+        </div>
+
+        <div class="card">
+          <h2 style="font-size: var(--t-md); margin-bottom: var(--s-4);"
+              data-en="Prefer to talk?" data-ur="Baat karna chahte hain?">Prefer to talk?</h2>
+          <div class="stack" style="gap: var(--s-3);">
+            <a class="btn btn--wa btn--block" href="https://wa.me/923082270007" target="_blank" rel="noopener">
+              <i class="fa-brands fa-whatsapp"></i> <span data-en="WhatsApp Us" data-ur="WhatsApp Karein">WhatsApp Us</span>
+            </a>
+            <a class="btn btn--ghost btn--block" href="tel:+923082270007">
+              <i class="fa-solid fa-phone"></i> +92 308 2270007
+            </a>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2 style="font-size: var(--t-md); margin-bottom: var(--s-3);"
+              data-en="Good to know" data-ur="Yaad rakhein">Good to know</h2>
+          <ul style="margin:0; padding-inline-start: var(--s-5); font-size: var(--t-sm); color: var(--text-soft); display:grid; gap: var(--s-3);">
+            <li data-en="Booking is free — you pay at the salon after your service."
+                data-ur="Booking bilkul muft hai — paisa salon me, service ke baad.">Booking is free — you pay at the salon after your service.</li>
+            <li data-en="Please arrive 5 minutes early so we can start on time."
+                data-ur="5 minute pehle aa jayein taake waqt par shuru ho sake.">Please arrive 5 minutes early.</li>
+            <li data-en="Need to change or cancel? Just message us on WhatsApp."
+                data-ur="Waqt badalna ya cancel karna ho? WhatsApp par paigham bhej dein.">Need to change or cancel? Message us on WhatsApp.</li>
+          </ul>
+          <a href="/refund" class="gold" style="font-size: var(--t-xs); display:inline-block; margin-top: var(--s-4); letter-spacing:.08em;"
+             data-en="Cancellation policy →" data-ur="Cancellation ka qaida →">Cancellation policy →</a>
+        </div>
+      </aside>
+    </div>
+
+    <!-- ── TASDEEQ KA CARD ───────────────────────────────────────────── -->
+    <div id="passWrap" hidden style="margin-top: var(--s-8);">
+      <div class="sec-head sec-head--mid">
+        <span class="eyebrow" style="justify-content:center;" data-en="Confirmed" data-ur="Ho Gaya">Confirmed</span>
+        <h2 data-en="Your booking pass" data-ur="Aap ka booking pass">Your booking pass</h2>
+        <p data-en="Save this or show it at the counter."
+           data-ur="Isay mehfooz kar lein ya counter par dikha dein.">Save this or show it at the counter.</p>
+      </div>
+
+      <div class="pass" id="passCard">
+        <img class="pass__logo" src="assets/img/logo.png" alt="Quiff Cuts">
+        <div class="pass__id" id="passId">QC-000000</div>
+        <div class="pass__rows">
+          <div><span data-en="Name" data-ur="Naam">Name</span><span id="passName"></span></div>
+          <div><span data-en="Date" data-ur="Tareekh">Date</span><span id="passDate"></span></div>
+          <div><span data-en="Time" data-ur="Waqt">Time</span><span id="passTime"></span></div>
+          <div><span data-en="Service" data-ur="Service">Service</span><span id="passService"></span></div>
+        </div>
+        <div class="pass__qr" id="passQr"></div>
+        <p style="font-size: var(--t-xs); color: var(--text-mute); margin-top: var(--s-4);">
+          61–62 Makkah Commercial Market, 208 Chak Road, Model City 1, Faisalabad · +92 308 2270007</p>
+      </div>
+
+      <div class="row" style="justify-content:center; margin-top: var(--s-5);">
+        <button class="btn btn--ghost btn--sm" type="button" id="passSave">
+          <i class="fa-solid fa-download"></i>
+          <span data-en="Save as image" data-ur="Tasveer mehfooz karein">Save as image</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__grid">
+      <div>
+        <img src="assets/img/logo.png" alt="Quiff Cuts" style="height:46px; margin-bottom: var(--s-4);">
+        <p class="muted" style="font-size: var(--t-sm); max-width: 34ch;"
+           data-en="A premium men's salon in Model City 1, Eden Valley, Faisalabad. Open every day, 10 AM to 2 AM."
+           data-ur="Model City 1, Eden Valley, Faisalabad ka premium men's salon. Roz khula — 10 baje subah se 2 baje raat tak.">
+          A premium men's salon in Model City 1, Eden Valley, Faisalabad.</p>
+      </div>
+      <div>
+        <h4 data-en="Explore" data-ur="Safhe">Explore</h4>
+        <div class="foot__links">
+          <a href="/services" data-en="Services" data-ur="Services">Services</a>
+          <a href="/packages" data-en="Packages" data-ur="Packages">Packages</a>
+          <a href="/gallery"  data-en="Gallery"  data-ur="Gallery">Gallery</a>
+          <a href="/team"     data-en="Our Team" data-ur="Hamari Team">Our Team</a>
+          <a href="/blog"     data-en="Blog"     data-ur="Blog">Blog</a>
+        </div>
+      </div>
+      <div>
+        <h4 data-en="Information" data-ur="Maloomat">Information</h4>
+        <div class="foot__links">
+          <a href="/faq"     data-en="FAQ" data-ur="FAQ">FAQ</a>
+          <a href="/payment" data-en="Payment &amp; Pricing" data-ur="Payment aur Qeemat">Payment &amp; Pricing</a>
+          <a href="/refund"  data-en="Refund &amp; Cancellation" data-ur="Refund aur Cancellation">Refund &amp; Cancellation</a>
+          <a href="/terms"   data-en="Terms &amp; Conditions" data-ur="Terms &amp; Conditions">Terms &amp; Conditions</a>
+          <a href="/privacy" data-en="Privacy Policy" data-ur="Privacy Policy">Privacy Policy</a>
+        </div>
+      </div>
+      <div>
+        <h4 data-en="Visit Us" data-ur="Tashreef Laayein">Visit Us</h4>
+        <div class="foot__links">
+          <a href="https://maps.google.com/?q=Quiff+Cuts+61-62+Makkah+Commercial+Market+208+Chak+Road+Eden+Valley+Model+City+1+Faisalabad" target="_blank" rel="noopener">61–62 Makkah Commercial Market<br>208 Chak Road, Eden Valley<br>Model City 1, Faisalabad, PK</a>
+          <a href="tel:+923082270007">+92 308 2270007</a>
+          <a href="mailto:info@quiffcuts.com">info@quiffcuts.com</a>
+          <span class="muted" style="font-size: var(--t-sm);"><span data-en="Daily" data-ur="Rozana">Daily</span> · 10:00 AM – 02:00 AM</span>
+        </div>
+        <div class="foot__social" style="margin-top: var(--s-4);">
+          <a href="https://www.facebook.com/quiffcuts1" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+          <a href="https://www.instagram.com/quiff_cuts" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.tiktok.com/@quiffcuts" target="_blank" rel="noopener" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="https://wa.me/923082270007" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="foot__bottom">
+      <span>© <span data-year>2024–2026</span> Quiff Cuts. <span data-en="All rights reserved." data-ur="Jumla haqooq mehfooz.">All rights reserved.</span></span>
+      <span><span data-en="Powered by" data-ur="Powered by">Powered by</span>
+        <a href="https://tressypos.com/" target="_blank" rel="noopener" title="TressyPOS — Salon POS &amp; Accounting Software">TressyPOS</a></span>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/923082270007" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="js/site.js?v=81dc4fd8"></script>
+<script type="module" src="js/booking.js?v=81dc4fd8"></script>
+</body>
+</html>
