@@ -7,7 +7,7 @@
       bas tasveeron ki jagah saaf paigham aa jata hai. Kuch tootta nahi.
    ========================================================================= */
 
-import { fetchList, esc } from './firebase.js?v=81dc4fd8';
+import { fetchList, esc } from './firebase.js?v=526c1913';
 
 /* ── 1. HERO — dheeme dheeme badalti tasveerein ──────────────────────────── */
 

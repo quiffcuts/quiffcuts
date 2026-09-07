@@ -11,12 +11,12 @@
       kabhi na ruke) — magar screen saaf batati hai ke record nahi bana.
    ========================================================================= */
 
-import { db, fbReady, collection, addDoc, serverTimestamp, SALON, esc } from './firebase.js?v=81dc4fd8';
+import { db, fbReady, collection, addDoc, serverTimestamp, SALON, esc } from './firebase.js?v=526c1913';
 
 /* Services — sirf NAAM (qeemat safhon par hai, do jagah na likhi jaye) */
 const SERVICES = [
     'Hair Cut', 'Beard Trim', 'Hair & Beard Cut', 'Shaving', 'Hair Style',
-    'Head Wash', 'Nose Strip', 'Hair Color', 'Beard Color', 'Face Cleansing',
+    'Head Wash', 'Nose Strip', 'Hair Color', 'Hair Keratin', 'Beard Color', 'Face Cleansing',
     'Facial Treatment', 'Massage', 'Mani Pedi', 'Wax', 'Makeup', 'Groom Package'
 ];
 const PACKAGES = ['Basic Grooming', 'Refresh & Style', 'Complete Color', 'VIP Grooming'];

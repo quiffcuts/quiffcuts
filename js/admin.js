@@ -14,7 +14,7 @@ import {
     collection, addDoc, getDocs, deleteDoc, doc, updateDoc,
     query, orderBy, serverTimestamp,
     signInWithEmailAndPassword, signOut, onAuthStateChanged
-} from './firebase.js?v=81dc4fd8';
+} from './firebase.js?v=526c1913';
 
 const $ = id => document.getElementById(id);
 let CUR_TAB = 'bookings';
